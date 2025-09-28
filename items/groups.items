@@ -2,6 +2,13 @@ Group gAstroRadation "Astro"
 Group gTemperature "Temperature Graph"
 Group gNetwork "Network Appliance" ["NetworkAppliance"]
 Group gInfluxdb "InfluxDB" 
+Group gModbus "Modbus dispositivi" ["ModbusDevices"]
+Group gPhaseL1
+Group gPhaseL2
+Group gPhaseL3
+Group gHVAC "HVAC" ["HVAC"]
+Group gCar "Car" ["Car"]
+
 
 Group:Number:AVG gAvgTemperatura "Temperatura media [%.1f °C]" 
 Group:Number:AVG gAvgTempPI "Temp.media PI"
@@ -14,12 +21,14 @@ Group gInterno "Interno Villa"  ["Indoor"]
         Group gPianoInterrato "Piano interrato" (gPiani) ["Basement"]
             Group gBiliardo "Biliardo" (gPianoInterrato) ["Room"]
             Group gAntibagnoPI "Antibagno PI" (gPianoInterrato) ["Bathroom"]
+            Group gGarage "Garage" (gPianoInterrato) ["Garage"]
         Group gPianoTerra "Piano terra" (gPiani) ["GroundFloor"]
             Group gAngoloTV "Angolo TV" (gPianoTerra) ["LivingRoom"]
             Group gAntibagnoPT "Antibagno PT" (gPianoTerra) ["Bathroom"]
             Group gSoggiorno "Soggiorno" (gPianoTerra) ["LivingRoom"]
             Group gAppArancione "Appartamento arancione" (gPianoTerra) ["Bedroom"]
             Group gCucina "Cucina"  (gPianoTerra) ["Kitchen"]
+            Group GLocaleTecnico "Locale Tecnico" (gPianoTerra) ["TechnicalRoom"]
         Group gPrimoPiano "Piano primo" (gPiani) ["FirstFloor"]
             Group gLetto "Camera da letto" (gPrimoPiano) ["Bedroom"]
             Group gArianna "Camera Arianna" (gPrimoPiano) ["Bedroom"]

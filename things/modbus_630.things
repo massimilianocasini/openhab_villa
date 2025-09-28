@@ -77,3 +77,22 @@ Bridge modbus:serial:sdm630_kWh [port="/dev/ttyUSB0", id=1, baud=9600, stopBits=
         // Thing data sdm_kwh_L3_total_kWh   [readStart="362", readValueType="float32" ]
     }    
 }
+Bridge modbus:serial:sdm630_resettabili [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1.0", parity="none", dataBits=8, encoding="rtu"]
+{
+    Bridge poller resettable [start=384, length=12, type="input", refresh=5000] {
+        Thing data sdm_reset_tot_active_energy       [readStart="384", readValueType="float32" ]      
+        Thing data sdm_reset_tot_reactive_energy  [readStart="386", readValueType="float32" ]      
+        Thing data sdm_reset_import_active_energy  [readStart="388", readValueType="float32" ]      
+        Thing data sdm_reset_export_active_energy  [readStart="390", readValueType="float32" ]      
+        Thing data sdm_reset_import_reactive_energy  [readStart="392", readValueType="float32" ]
+        Thing data sdm_reset_export_reactive_energy  [readStart="394", readValueType="float32" ]      
+    }    
+}
+Bridge modbus:serial:sdm630_reset [ port="/dev/ttyUSB0", id=1, baud=9600, dataBits=8, parity="none", stopBits="1.0",  encoding="rtu"]
+{// Poller che include il registro di reset
+    Bridge poller energyReset [ start=61456, length=2, type="holding"] 
+    {
+        // Data Thing con funzione scrittura
+        Thing data resetEnergy [ writeStart="61456", writeValueType="int16", writeMultipleEvenWithSingleRegisterOrCoil=true, writeType="holding" ]
+    }
+}
