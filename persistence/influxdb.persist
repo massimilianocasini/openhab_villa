@@ -19,5 +19,5 @@ Strategies
  */ 
 Items
 {
-	gInfluxdb* : strategy =  everyChange, everyHour, restoreOnStartup
+	gInfluxdb* : strategy =  everyMinute, restoreOnStartup
 }

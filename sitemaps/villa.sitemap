@@ -1,6 +1,10 @@
 sitemap villa label="Benvenuto a CASA"
 {
-  //  Frame label="Gestione riscaldamento"{
+        Frame label="Stato PDC" {
+            Selection item=StatoPDC mappings=[0="OFF", 1="ON", 2="ENERGY SAVE", 3="AUTO"]
+            Selection item=ModalitaPDC mappings=[0="SANITARIO", 1="INVERNO+SANITARIO", 2="ESTATE+SANITARIO"]
+        }
+        
         Frame label="Stato zone" {
             Default item=AllarmeGenerale
             Selection item=StatoFZ1 mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"]

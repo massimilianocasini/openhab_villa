@@ -6,7 +6,6 @@ Group gModbus "Modbus dispositivi" ["ModbusDevices"]
 Group gPhaseL1
 Group gPhaseL2
 Group gPhaseL3
-Group gHVAC "HVAC" ["HVAC"]
 Group gCar "Car" ["Car"]
 
 
@@ -15,21 +14,21 @@ Group:Number:AVG gAvgTempPI "Temp.media PI"
 Group:Number:AVG gAvgTempPT "Temp.media PT"
 Group:Number:AVG gAvgTempP1 "temp.media P1"
 
-Group gEsterno "Esterno Villa"  ["Outdoor"] 
+Group gEsterno "Esterno Villa"  ["Outdoor"]
+    Group gLocaleTecnicoPiscina "Locale tecnico piscina" (gEsterno) ["BoilerRoom"]
 Group gInterno "Interno Villa"  ["Indoor"]
-    Group gPiani "Piani" (gInterno) ["Floor"]
-        Group gPianoInterrato "Piano interrato" (gPiani) ["Basement"]
+        Group gPianoInterrato "Piano interrato" (gInterno) ["Basement"]
             Group gBiliardo "Biliardo" (gPianoInterrato) ["Room"]
             Group gAntibagnoPI "Antibagno PI" (gPianoInterrato) ["Bathroom"]
             Group gGarage "Garage" (gPianoInterrato) ["Garage"]
-        Group gPianoTerra "Piano terra" (gPiani) ["GroundFloor"]
+        Group gPianoTerra "Piano terra" (gInterno) ["GroundFloor"]
             Group gAngoloTV "Angolo TV" (gPianoTerra) ["LivingRoom"]
             Group gAntibagnoPT "Antibagno PT" (gPianoTerra) ["Bathroom"]
             Group gSoggiorno "Soggiorno" (gPianoTerra) ["LivingRoom"]
             Group gAppArancione "Appartamento arancione" (gPianoTerra) ["Bedroom"]
             Group gCucina "Cucina"  (gPianoTerra) ["Kitchen"]
-            Group GLocaleTecnico "Locale Tecnico" (gPianoTerra) ["TechnicalRoom"]
-        Group gPrimoPiano "Piano primo" (gPiani) ["FirstFloor"]
+            Group GLocaleTecnico "Locale Tecnico PT" (gPianoTerra) ["BoilerRoom"]
+        Group gPrimoPiano "Piano primo" (gInterno) ["FirstFloor"]
             Group gLetto "Camera da letto" (gPrimoPiano) ["Bedroom"]
             Group gArianna "Camera Arianna" (gPrimoPiano) ["Bedroom"]
             Group gAppRosso "Appartamento rosso" (gPrimoPiano) ["Bedroom"]

@@ -4,12 +4,13 @@ rule "Invia messaggio a BOT per device IP persa"
         Member of gNetwork changed 
     then
     val host = triggeringItem
+    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot") 
     if (host.state==ON) {
-        sendTelegram("bot1", host.name+" CONNESSO")
-        mailActions.sendMail("massimiliano.casini@gmail.com","Villa", host.name+"CONNESSO")
+        telegramActions.sendTelegram("Host " + host.name + " connesso in rete VILLA")
+       // mailActions.sendMail("massimiliano.casini@gmail.com","Villa", host.name+"CONNESSO")
     }
     else {
-        sendTelegram("bot1", host.name+" DISCONNESSO")
-        mailActions.sendMail("massimiliano.casini@gmail.com","Villa", host.name+"DISCONNESSO")
+        telegramActions.sendTelegram("Host " + host.name + " perso dalla rete VILLA !!!!")
+       // mailActions.sendMail("massimiliano.casini@gmail.com","Villa", host.name+"DISCONNESSO")
     }
 end

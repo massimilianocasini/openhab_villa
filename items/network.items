@@ -1,5 +1,5 @@
 Switch opensprinkler "Opensprinkler 192.168.1.153 [MAP(network.map):%s]" <settings> (gNetwork) ["Status"] {channel="network:servicedevice:opensprinkler:online"}
-Switch plcriscaldamento "PLC Riscaldamento 192.168.1.160 [MAP(network.map):%s]" <settings> (gNetwork) ["Status"] {channel="network:servicedevice:plcriscaldamento:online"}
-Switch dahuatvcc "Dauha TVCC 192.168.1.2 [MAP(network.map):%s]" <settings> (gNetwork) ["Status"] {channel="network:servicedevice:dahuatvcc:online"}
-Switch plcpompadicalore "PLC Pompa di calore 192.168.1.150 [MAP(network.map):%s]" <settings> (gNetwork) ["Status"] {channel="network:servicedevice:plcpompadicalore:online"}
+Switch plcriscaldamento "PLC Riscaldamento 192.168.1.160 [MAP(network.map):%s]" <settings> (gNetwork, GLocaleTecnico) ["Status"] {channel="network:servicedevice:plcriscaldamento:online"}
+Switch dahuatvcc "Dauha TVCC 192.168.1.2 [MAP(network.map):%s]" <settings> (gNetwork, GLocaleTecnico) ["Status"] {channel="network:servicedevice:dahuatvcc:online"}
+Switch plcpompadicalore "PLC Pompa di calore 192.168.1.150 [MAP(network.map):%s]" <settings> (gNetwork, GLocaleTecnico) ["Status"] {channel="network:servicedevice:plcpompadicalore:online"}
 Switch eap110outdoorwifi "WIFI Piscina 192.168.1.34 [MAP(network.map):%s]" <settings> (gNetwork) ["Status"] {channel="network:servicedevice:eap110outdoorwifi:online"}
