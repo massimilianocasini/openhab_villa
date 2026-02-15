@@ -1,16 +1,14 @@
-//val mailActions = getActions("mail","mail:smtp:gmail_service")
 rule "Invia messaggio a BOT per device IP persa"
     when
-        Member of gNetwork changed 
+        Member of gNetwork changed
     then
     val host = triggeringItem
-    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot") 
-    if (host.state==ON) {
-        telegramActions.sendTelegram("Host " + host.name + " connesso in rete VILLA")
-       // mailActions.sendMail("massimiliano.casini@gmail.com","Villa", host.name+"CONNESSO")
+    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+    val hostLabel = host.label ?: host.name
+    if (host.state == ON) {
+        telegramActions.sendTelegram("Host " + hostLabel + " connesso in rete VILLA")
     }
     else {
-        telegramActions.sendTelegram("Host " + host.name + " perso dalla rete VILLA !!!!")
-       // mailActions.sendMail("massimiliano.casini@gmail.com","Villa", host.name+"DISCONNESSO")
+        telegramActions.sendTelegram("Host " + hostLabel + " perso dalla rete VILLA !!!!")
     }
 end

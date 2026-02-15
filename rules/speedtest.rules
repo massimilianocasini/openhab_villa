@@ -1,0 +1,10 @@
+rule "Invia risultato Speedtest a Telegram"
+    when
+        Item Speedtest_ResultURL changed
+    then
+    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+    val url = Speedtest_ResultURL.state.toString
+    if (url != "NULL" && url != "UNDEF") {
+        telegramActions.sendTelegramPhoto("telegram:telegramBot:Telegram_Bot", url + ".png", "Speedtest: " + url)
+    }
+end
