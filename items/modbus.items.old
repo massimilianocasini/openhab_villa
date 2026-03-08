@@ -1,0 +1,211 @@
+Number:Temperature TempAccImpianto "T.accumulo impianto [%.1f C°]" <temperature> (GLocaleTecnico, gHVAC, gInfluxdb) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:pdc_bridge:pdc_poller01:TAccImp:number" }
+Number:Temperature TempContrACS "T.controllo ACS [%.1f C°]" <temperature> (GLocaleTecnico, gHVAC, gInfluxdb) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:pdc_bridge:pdc_poller01:TContrACS:number" }
+Number:Temperature TempMandGeo "T.acqua uscita GEO [%.1f C°]" <temperature> (GLocaleTecnico, gHVAC, gInfluxdb) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:pdc_bridge:pdc_poller01:TMandGEO:number" }
+Number:Temperature TempRitGeo "T.acqua ingresso GEO [%.1f C°]" <temperature> (GLocaleTecnico, gHVAC, gInfluxdb) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:pdc_bridge:pdc_poller01:TRitGEO:number" }
+Number:Temperature TempUscitaScambCircImp "T.acqua uscita Scambiatore Circuito impianto [%.1f C°]" <temperature> (GLocaleTecnico, gHVAC, gInfluxdb) ["Measurement","Temperature"] { unit="°C", channel="modbus:data:pdc_bridge:pdc_poller01:TUscitaaAquaScambiatoreCI:number" }
+Number:Temperature TempIngressoScambCircPrim "T.acqua ingresso Scambiatore Circuito primario [%.1f C°]" <temperature> (GLocaleTecnico, gHVAC, gInfluxdb) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:pdc_bridge:pdc_poller01:TIngressoAcquaScambiatoreCP:number" }
+
+Number Set_temp_standard_condition_chiller "SetP T.StCond.(Chiller)[%.1f °C]" <temperature> (GLocaleTecnico, gHVAC)  { channel="modbus:data:pdc_bridge:pdc_poller02:SetTinStCC:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number Set_temp_standard_condition_heatPump "SetP T.StCond.(Heat Pump)[%.1f °C]" <temperature> (GLocaleTecnico, gHVAC) { channel="modbus:data:pdc_bridge:pdc_poller02:SetTinStCHP:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item" , widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number Set_temp_standard_condition_ACS "SetP T.ACS StCond.(PDC)[%.1f °C]" <temperature> (GLocaleTecnico, gHVAC) ["Setpoint","Temperature"]  { channel="modbus:data:pdc_bridge:pdc_poller02:SetTACStCPDC:number" , stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item" , widget="oh-stepper-card" [step="1", min="21", max="90"]}
+Number Set_temp_energySave_condition_chiller "SetP T.EnerSaveCond.(Chiller)[%.1f °C]" <temperature> (GLocaleTecnico, gHVAC) { channel="modbus:data:pdc_bridge:pdc_poller02:SetTinSaCC:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number Set_temp_energySave_condition_heatPump "SetP T.EnerSaveCond.(Heat Pump)[%.1f °C]" <temperature> (GLocaleTecnico, gHVAC) { channel="modbus:data:pdc_bridge:pdc_poller02:SetTinSaCHP:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number Set_temp_energySave_condition_ACS "SetP T.ACS EnerSaveCond.(PDC)[%.1f °C]" <temperature> (GLocaleTecnico, gHVAC) ["Setpoint","Temperature"]  { channel="modbus:data:pdc_bridge:pdc_poller02:SetTACSESCPDC:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="90"] }
+
+Number PompaRicircolo "Pompa Ricircolo [MAP(pomp.map):%s]" <pump> (GLocaleTecnico, gPompe) ["Status"] { channel="modbus:data:termo_bridge:termo_poller01:PompaRi:number"}
+Number PompaPianoInterrato "Pompa PI [MAP(pomp.map):%s]" <pump> (GLocaleTecnico, gPompe) ["Status"] { channel="modbus:data:termo_bridge:termo_poller01:PompaPI:number" }
+Number PompaPianoTerra "Pompa PT [MAP(pomp.map):%s]" <pump> (GLocaleTecnico, gPompe) ["Status"] { channel="modbus:data:termo_bridge:termo_poller01:PompaPT:number" }
+Number PompaPianoPrimo "Pompa P1 [MAP(pomp.map):%s]" <pump> (GLocaleTecnico, gPompe) ["Status"] { channel="modbus:data:termo_bridge:termo_poller01:PompaP1:number" }
+Number PompaTermosifoni "Pompa Termosifoni [MAP(pomp.map):%s]" <pump> (GLocaleTecnico, gPompe) ["Status"] { channel="modbus:data:termo_bridge:termo_poller01:PompaTermo:number" }
+Number PompaRilancio "Pompa rilancio tra accumulo e collettore [MAP(pomp.map):%s]" <pump> (GLocaleTecnico, gPompe) ["Status"] { channel="modbus:data:termo_bridge:termo_poller01:PompaRil:number"}
+Number AllarmeGenerale "Allarme generale [MAP(alarm.map):%s]" <alarm> (GLocaleTecnico, gHVAC) { channel="modbus:data:termo_bridge:termo_poller02:AllarmeGen:number"}
+
+//Number StatoFZ1 "PI [MAP(zone.map):%s]"  { channel="modbus:data:termo_bridge:termo_poller09:Sfz1:number" }
+Number StatoFZ1 "Piano Interrato [MAP(zone.map):%s]" <settings> (GLocaleTecnico) { channel="modbus:data:termo_bridge:termo_poller09:Sfz1:number" }
+Number StatoFZ2 "Piano Terra [MAP(zone.map):%s]" <settings> (GLocaleTecnico) { channel="modbus:data:termo_bridge:termo_poller10:Sfz2:number" }
+Number StatoFZ3 "Piano Primo [MAP(zone.map):%s]"  <settings> (GLocaleTecnico) { channel="modbus:data:termo_bridge:termo_poller11:Sfz3:number" }
+
+Number:Temperature Termoumidostato1T    "T.Biliardo PI  [%.1f °C]"  <temperature> (gTermoumidostatoBiliardo, gTemperature) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht1t:number" }
+Number Termoumidostato1U    "U.Biliardo PI [%.1f %%]" <humidity> (gTermoumidostatoBiliardo, gTemperature)  ["Measurement", "Humidity"]  { channel="modbus:data:termo_bridge:termo_poller04:Tht1u:number" }
+Number Termoumidostato1S    "SP Biliardo PI [%.1f °C]"    <temperature> (gTermoumidostatoBiliardo)  ["Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht1s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina1          "Att. testina Elettrotermica Biliardo [MAP(testina.map):%s]"  <settings>  (gTermoumidostatoBiliardo) ["Status"]  { channel="modbus:data:termo_bridge:termo_poller03:TestTht1:number" }
+Number AllarmeTht1          "Allarme Biliardo PI  [MAP(alarm.map):%s]" <settings>  (gTermoumidostatoBiliardo) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht1:number" }   
+Number StatoRele1           "Relay Trmst Biliardo [MAP(statorele.map):%s]"  <settings>  (gTermoumidostatoBiliardo) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht1:number" }
+Number FeedBRele1           "Trmst Biliardo [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoBiliardo) { channel="modbus:data:termo_bridge:termo_poller03:FReleTht1:number" }
+Number ONTht1               "Trmst ON Biliardo"  <settings> (gTermoumidostatoBiliardo) { channel="modbus:data:localtermo_bridgehostTCP:termo_poller03:OnTht1:number" }
+Number OFFTht1              "Trmst OFF Biliardo" <settings>  (gTermoumidostatoBiliardo)  { channel="modbus:data:termo_bridge:termo_poller03:OffTht1:number" }
+Switch ProxyAttTermo1       "Att./Dis. Trmst Biliardo" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo1
+String ProxyTempAttTermo1   "Attendi ...."  
+String Riepilogo1  
+
+Number:Temperature Termoumidostato2T    "T.Antibagno PI [%.1f °C]"  <temperature> (gTermoumidostatoAntiBagnoPI, gTemperature)  ["Measurement","Temperature"]  {unit="°C",channel="modbus:data:termo_bridge:termo_poller04:Tht2t:number" }
+Number Termoumidostato2U    "U.Antibagno PI [%.1f %%]"    <humidity> (gTermoumidostatoAntiBagnoPI, gTemperature) ["Measurement", "Humidity"]   { channel="modbus:data:termo_bridge:termo_poller04:Tht2u:number" }
+Number Termoumidostato2S    "SP Antibagno PI [%.1f °C]"   <temperature> (gTermoumidostatoAntiBagnoPI) ["Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht2s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina2          "Att. testina Elettrotermica Antibagno PI [MAP(testina.map):%s]"  <settings> (gTermoumidostatoAntiBagnoPI) ["Status"]  { channel="modbus:data:termo_bridge:termo_poller03:TestTht2:number" }
+Number AllarmeTht2          "Allarme Antibagno PI [MAP(alarm.map):%s]" <settings> (gTermoumidostatoAntiBagnoPI) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht2:number" }   
+Number StatoRele2           "Relay Trmst Antibagno PI [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoAntiBagnoPI) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht2:number" }
+Number FeedBRele2           "Trmst Antibagno PI [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoAntiBagnoPI)  { channel="modbus:data:termo_bridge:termo_poller03:FReleTht2:number" }
+Number ONTht2               "Trmst ON Antibagno PI" <settings> (gTermoumidostatoAntiBagnoPI) { channel="modbus:data:termo_bridge:termo_poller03:OnTht2:number" }
+Number OFFTht2              "Trmst OFF Antibagno PI" <settings>  (gTermoumidostatoAntiBagnoPI) { channel="modbus:data:termo_bridge:termo_poller03:OffTht2:number" }
+Switch ProxyAttTermo2       "Att./Dis. Trmst Antibagbo PI" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo2
+String ProxyTempAttTermo2   "Attendi ...."
+String Riepilogo2 
+
+Number:Temperature Termoumidostato3T    "T.App.arancione PT [%.1f °C]"  <temperature> (gTermoumidostatoAppArancione, gTemperature) ["Measurement","Temperature"]  {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht3t:number" }
+Number Termoumidostato3U    "U.App.arancione PT [%.1f %%]"    <humidity> (gTermoumidostatoAppArancione, gTemperature)["Measurement", "Humidity"]  { channel="modbus:data:termo_bridge:termo_poller04:Tht3u:number" }
+Number Termoumidostato3S    "SP App.arancione PT [%.1f °C]"   <temperature> (gTermoumidostatoAppArancione) ["Setpoint", "Temperature"]   { channel="modbus:data:termo_bridge:termo_poller08:Tht3s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina3          "Att. testina Elettrotermica App.arancione PT [MAP(testina.map):%s]"  <settings> (gTermoumidostatoAppArancione)["Status"]  { channel="modbus:data:termo_bridge:termo_poller03:TestTht3:number" }
+Number AllarmeTht3          "Allarme App.arancione PT [MAP(alarm.map):%s]" <settings> (gTermoumidostatoAppArancione) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht3:number" }  
+Number StatoRele3           "Relay Trmst App.arancione PT [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoAppArancione)["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht3:number" }
+Number FeedBRele3           "Trmst App.arancione PT [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoAppArancione)  { channel="modbus:data:termo_bridge:termo_poller03:FReleTht3:number" }
+Number ONTht3               "Trmst ON App.arancione" <settings> (gTermoumidostatoAppArancione) { channel="modbus:data:termo_bridge:termo_poller03:OnTht3:number" }
+Number OFFTht3              "Trmst OFF App.arancione" <settings> (gTermoumidostatoAppArancione) { channel="modbus:data:termo_bridge:termo_poller03:OffTht3:number" }
+Switch ProxyAttTermo3       "Att./Dis. Trmst App.Arancione"  (gProxyAtt) <settings>
+Number ProxyWatingAttTermo3
+String ProxyTempAttTermo3   "Attendi ...."
+String Riepilogo3 
+
+Number:Temperature Termoumidostato4T    "T.AngoloTV [%.1f °C]"  <temperature> (gTermoumidostatoAngoloTV, gTemperature) ["Measurement","Temperature"]   { unit="°C",channel="modbus:data:termo_bridge:termo_poller05:Tht4t:number" }
+Number Termoumidostato4U    "U.AngoloTV [%.1f %%]"    <humidity> (gTermoumidostatoAngoloTV, gTemperature)["Measurement", "Humidity"]  { channel="modbus:data:termo_bridge:termo_poller05:Tht4u:number" }
+Number Termoumidostato4S    "SP AngoloTV [%.1f °C]"   <temperature> (gTermoumidostatoAngoloTV) ["Setpoint", "Temperature"]    { channel="modbus:data:termo_bridge:termo_poller08:Tht4s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina4          "Att. testina Elettrotermica AngoloTV [MAP(testina.map):%s]"  <settings>  (gTermoumidostatoAngoloTV) ["Status"]  { channel="modbus:data:termo_bridge:termo_poller03:TestTht4:number" }
+Number AllarmeTht4          "Allarme AngoloTV [MAP(alarm.map):%s]" <settings> (gTermoumidostatoAngoloTV) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht4:number" }
+Number StatoRele4           "Relay Trmst AngoloTV [MAP(statorele.map):%s]"  <settings>  (gTermoumidostatoAngoloTV) ["Status"]  { channel="modbus:data:termo_bridge:termo_poller03:ReleTht4:number" }
+Number FeedBRele4           "Trmst AngoloTV [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoAngoloTV) { channel="modbus:data:termo_bridge:termo_poller03:FReleTht4:number" }
+Number ONTht4               "Trmst ON AngoloTV" <settings> (gTermoumidostatoAngoloTV) { channel="modbus:data:termo_bridge:termo_poller03:OnTht4:number" }
+Number OFFTht4              "Trmst OFF AngoloTV" <settings>  (gTermoumidostatoAngoloTV)   { channel="modbus:data:termo_bridge:termo_poller03:OffTht4:number" }
+Switch ProxyAttTermo4       "Att./Dis. Trmst AngoloTV" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo4
+String ProxyTempAttTermo4   "Attendi ...." 
+String Riepilogo4
+
+Number:Temperature Termoumidostato5T    "T.Antibagno PT [%.1f °C]"   <temperature> (gTermoumidostatoAntiBagnoPT, gTemperature) ["Measurement","Temperature"] { unit="°C",channel="modbus:data:termo_bridge:termo_poller05:Tht5t:number" }
+Number Termoumidostato5U    "U.Antibagno PT [%.1f %%]" <humidity> (gTermoumidostatoAntiBagnoPT, gTemperature) ["Measurement", "Humidity"] { channel="modbus:data:termo_bridge:termo_poller05:Tht5u:number" }
+Number Termoumidostato5S    "SP Antibagno PT [%.1f °C]"    <temperature> (gTermoumidostatoAntiBagnoPT) [ "Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht5s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"]}
+Number AttTestina5          "Att. testina Elettrotermica Antibagno PT [MAP(testina.map):%s]"  <settings> (gTermoumidostatoAntiBagnoPT) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:TestTht5:number" }
+Number AllarmeTht5          "Allarme Antibagno PT [MAP(alarm.map):%s]" <settings> (gTermoumidostatoAntiBagnoPT) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht5:number" }
+Number StatoRele5           "Relay Trmst Antibagno PT [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoAntiBagnoPT) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht5:number" }
+Number FeedBRele5           "Trmst Antibagno PT [MAP(feedbackr.map):%s]"  <settings>  (gTermoumidostatoAntiBagnoPT) { channel="modbus:data:termo_bridge:termo_poller03:FReleTht5:number" }
+Number ONTht5               "Trmst ON Antibagno PT" <settings> (gTermoumidostatoAntiBagnoPT) { channel="modbus:data:termo_bridge:termo_poller03:OnTht5:number" }
+Number OFFTht5              "Trmst OFF Antibagno PT" <settings> (gTermoumidostatoAntiBagnoPT) { channel="modbus:data:termo_bridge:termo_poller03:OffTht5:number" }
+Switch ProxyAttTermo5       "Att./Dis. Trmst Antibagno PT" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo5
+String ProxyTempAttTermo5   "Attendi ...."
+String Riepilogo5 
+
+Number:Temperature Termoumidostato6T    "T.Soggiorno  [%.1f °C]"   <temperature> (gTermoumidostatoSoggiorno, gTemperature)  [ "Measurement","Temperature"]    {unit="°C", channel="modbus:data:termo_bridge:termo_poller05:Tht6t:number" }
+Number Termoumidostato6U    "U.Soggiorno [%.1f %%]"  <humidity> (gTermoumidostatoSoggiorno, gTemperature ) ["Measurement", "Humidity"] { channel="modbus:data:termo_bridge:termo_poller05:Tht6u:number" }
+Number Termoumidostato6S    "SP Soggiorno [%.1f °C]" <temperature> (gTermoumidostatoSoggiorno) [ "Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht6s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina6          "Att. testina Elettrotermica Soggiorno [MAP(testina.map):%s]"  <settings> (gTermoumidostatoSoggiorno) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:TestTht6:number"}
+Number AllarmeTht6          "Allarme Soggiorno [MAP(alarm.map):%s]" <settings> (gTermoumidostatoSoggiorno) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht6:number" }
+Number StatoRele6           "Relay Trmst Soggiorno [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoSoggiorno) ["Status"]  { channel="modbus:data:termo_bridge:termo_poller03:ReleTht6:number" }
+Number FeedBRele6           "Trmst Soggiorno [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoSoggiorno) { channel="modbus:data:termo_bridge:termo_poller03:FReleTht6:number" }
+Number ONTht6               "Trmst ON Soggiorno" <settings> (gTermoumidostatoSoggiorno) { channel="modbus:data:termo_bridge:termo_poller03:OnTht6:number" }
+Number OFFTht6              "Trmst OFF Soggiorno" <settings> (gTermoumidostatoSoggiorno) { channel="modbus:data:termo_bridge:termo_poller03:OffTht6:number" }
+Switch ProxyAttTermo6       "Att./Dis. Trmst Soggiorno" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo6
+String ProxyTempAttTermo6   "Attendi ...."
+String Riepilogo6 
+
+Number:Temperature Termoumidostato7T    "T.Cucina [%.1f °C]"    <temperature> (gTermoumidostatoCucina, gTemperature)  [ "Measurement","Temperature"]  {unit="°C", channel="modbus:data:termo_bridge:termo_poller06:Tht7t:number" }
+Number Termoumidostato7U    "U.Cucina [%.1f %%]" <humidity>  (gTermoumidostatoCucina, gTemperature) ["Measurement", "Humidity"] { channel="modbus:data:termo_bridge:termo_poller06:Tht7u:number" }
+Number Termoumidostato7S    "SP Cucina [%.1f °C]" <temperature> (gTermoumidostatoCucina) [ "Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht7s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina7          "Att. testina Elettrotermica Cucina [MAP(testina.map):%s]"  <settings> (gTermoumidostatoCucina) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:TestTht7:number" }
+Number AllarmeTht7          "Allarme Cucina [MAP(alarm.map):%s]" <settings> (gTermoumidostatoCucina)  ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht7:number" }
+Number StatoRele7           "Relay Trmst Cucina [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoCucina)["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht7:number" }
+Number FeedBRele7           "Trmst Cucina [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoCucina) { channel="modbus:data:termo_bridge:termo_poller03:FReleTht7:number" }
+Number ONTht7               "Trmst ON Cucina" <settings> (gTermoumidostatoCucina) { channel="modbus:data:termo_bridge:termo_poller03:OnTht7:number" }
+Number OFFTht7              "Trmst OFF Cucina " <settings> (gTermoumidostatoCucina) { channel="modbus:data:termo_bridge:termo_poller03:OffTht7:number" }
+Switch ProxyAttTermo7       "Att./Dis. Trmst Cucina" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo7
+String ProxyTempAttTermo7   "Attendi ...."
+String Riepilogo7 
+
+Number:Temperature Termoumidostato8T    "T.App.rosso [%.1f °C]" <temperature> (gTermoumidostatoAppRosso, gTemperature) [ "Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller06:Tht8t:number" }
+Number Termoumidostato8U    "U.App.rosso [%.1f %%]" <humidity>  (gTermoumidostatoAppRosso, gTemperature) ["Measurement", "Humidity"] { channel="modbus:data:termo_bridge:termo_poller06:Tht8u:number" }
+Number Termoumidostato8S    "SP App.rosso [%.1f °C]"  <temperature> (gTermoumidostatoAppRosso) [ "Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht8s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina8          "Att. testina Elettrotermica App.rosso [MAP(testina.map):%s]"  <settings> (gTermoumidostatoAppRosso)["Status"] { channel="modbus:data:termo_bridge:termo_poller03:TestTht8:number" }
+Number AllarmeTht8          "Allarme App.rosso [MAP(alarm.map):%s]" <settings> (gTermoumidostatoAppRosso) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht8:number" }
+Number StatoRele8           "Relay Trmst App.rosso [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoAppRosso) ["Status"]  { channel="modbus:data:termo_bridge:termo_poller03:ReleTht8:number" }
+Number FeedBRele8           "Trmst App.rosso [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoAppRosso) { channel="modbus:data:termo_bridge:termo_poller03:FReleTht8:number" }
+Number ONTht8               "Trmst ON App.rosso" <settings>(gTermoumidostatoAppRosso) { channel="modbus:data:termo_bridge:termo_poller03:OnTht8:number" }
+Number OFFTht8              "Trmst OFF App.rosso" <settings> (gTermoumidostatoAppRosso) { channel="modbus:data:termo_bridge:termo_poller03:OffTht8:number" }
+Switch ProxyAttTermo8       "Att./Dis. Trmst App.rosso" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo8
+String ProxyTempAttTermo8   "Attendi ...."
+String Riepilogo8 
+
+Number:Temperature Termoumidostato9T    "T.App.verde [%.1f °C]" <temperature> (gTermoumidostatoAppVerde, gTemperature) ["Measurement","Temperature"] {unit="°C",channel="modbus:data:termo_bridge:termo_poller06:Tht9t:number" }
+Number Termoumidostato9U    "U.App.verde [%.1f %%]"   <humidity> (gTermoumidostatoAppVerde, gTemperature) ["Measurement", "Humidity"] {channel="modbus:data:termo_bridge:termo_poller06:Tht9u:number" }
+Number Termoumidostato9S    "SP App.verde [%.1f °C]"  <temperature> (gTermoumidostatoAppVerde) [ "Setpoint", "Temperature"]  {channel="modbus:data:termo_bridge:termo_poller08:Tht9s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina9          "Att. testina Elettrotermica App.verde [MAP(testina.map):%s]"  <settings>  (gTermoumidostatoAppVerde) ["Status"]  {channel="modbus:data:termo_bridge:termo_poller03:TestTht9:number" }
+Number AllarmeTht9          "Allarme App.verde [MAP(alarm.map):%s]" <settings> (gTermoumidostatoAppVerde)  ["Status"] {channel="modbus:data:termo_bridge:termo_poller03:AllTht9:number"}
+Number StatoRele9           "Relay Trmst App.verde [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoAppVerde) ["Status"]  {channel="modbus:data:termo_bridge:termo_poller03:ReleTht9:number"}
+Number FeedBRele9           "Trmst App.verde [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoAppVerde) {channel="modbus:data:termo_bridge:termo_poller03:FReleTht9:number"}
+Number ONTht9               "Trmst ON App.verde" <settings> (gTermoumidostatoAppVerde)  {channel="modbus:data:termo_bridge:termo_poller03:OnTht9:number"}
+Number OFFTht9              "Trmst OFF App.verde" <settings>  (gTermoumidostatoAppVerde) {channel="modbus:data:termo_bridge:termo_poller03:OffTht9:number"}
+Switch ProxyAttTermo9       "Att./Dis. Trmst App.verde" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo9
+String ProxyTempAttTermo9   "Attendi ...."
+String Riepilogo9 
+
+Number:Temperature Termoumidostato10T    "T.Corr. [%.1f °C]" <temperature> (gTermoumidostatoCorridoio, gTemperature) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller07:Tht10t:number" }
+Number Termoumidostato10U    "U.Corr. [%.1f %%]" <humidity> (gTermoumidostatoCorridoio, gTemperature) ["Measurement", "Humidity"] { channel="modbus:data:termo_bridge:termo_poller07:Tht10u:number" }
+Number Termoumidostato10S    "SP Corr. [%.1f °C]" <temperature> (gTermoumidostatoCorridoio) ["Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht10s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"]}
+Number AttTestina10          "Att. testina Elettrotermica Corr. [MAP(testina.map):%s]" <settings> (gTermoumidostatoCorridoio) { channel="modbus:data:termo_bridge:termo_poller03:TestTht10:number" }
+Number AllarmeTht10          "Allarme Corr. [MAP(alarm.map):%s]" <settings> (gTermoumidostatoCorridoio) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht10:number" }
+Number StatoRele10           "Relay Trmst Corr. [MAP(statorele.map):%s]" <settings> (gTermoumidostatoCorridoio) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht10:number" }
+Number FeedBRele10           "Trmst Corr. [MAP(feedbackr.map):%s]" <settings> (gTermoumidostatoCorridoio)  { channel="modbus:data:termo_bridge:termo_poller03:FReleTht10:number" }
+Number ONTht10               "Trmst ON Corr." <settings> (gTermoumidostatoCorridoio) { channel="modbus:data:termo_bridge:termo_poller03:OnTht10:number" }
+Number OFFTht10              "Trmst OFF Corr." <settings> (gTermoumidostatoCorridoio) { channel="modbus:data:termo_bridge:termo_poller03:OffTht10:number" }
+Switch ProxyAttTermo10       "Att./Dis. Trmst Corr." (gProxyAtt) <settings>
+Number ProxyWatingAttTermo10
+String ProxyTempAttTermo10   "Attendi ...."
+String Riepilogo10 
+
+Number:Temperature Termoumidostato11T    "T.Arianna [%.1f °C]"  <temperature> (gTermoumidostatoArianna, gTemperature) [ "Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller07:Tht11t:number" }
+Number Termoumidostato11U    "U.Arianna [%.1f %%]"    <humidity> (gTermoumidostatoArianna, gTemperature)  ["Measurement", "Humidity"] { channel="modbus:data:termo_bridge:termo_poller07:Tht11u:number" }
+Number Termoumidostato11S    "SP Arianna [%.1f °C]"   <temperature> (gTermoumidostatoArianna) [ "Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht11s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina11          "Att. testina Elettrotermica Arianna [MAP(testina.map):%s]"  <settings> (gTermoumidostatoArianna) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:TestTht11:number" }
+Number AllarmeTht11          "Allarme Arianna [MAP(alarm.map):%s]" <settings> (gTermoumidostatoArianna)  ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht11:number" }
+Number StatoRele11           "Relay Trmst Arianna [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoArianna) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht11:number" }
+Number FeedBRele11           "Trmst Arianna [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoArianna)  { channel="modbus:data:termo_bridge:termo_poller03:FReleTht11:number" }
+Number ONTht11               "Trmst ON Arianna" <settings> (gTermoumidostatoArianna)  { channel="modbus:data:termo_bridge:termo_poller03:OnTht11:number" }
+Number OFFTht11              "Trmst OFF Arianna" <settings> (gTermoumidostatoArianna)  { channel="modbus:data:termo_bridge:termo_poller03:OffTht11:number" }
+Switch ProxyAttTermo11       "Att./Dis. Trmst Arianna" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo11
+String ProxyTempAttTermo11   "Attendi ...."
+String Riepilogo11 
+
+Number:Temperature Termoumidostato12T    "T.Giolo [%.1f °C]"    <temperature> (gTermoumidostatoLetto, gTemperature) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller07:Tht12t:number" }
+Number Termoumidostato12U    "U.Giolo [%.1f %%]"  <humidity> (gTermoumidostatoLetto, gTemperature) ["Measurement", "Humidity"]   { channel="modbus:data:termo_bridge:termo_poller07:Tht12u:number" }
+Number Termoumidostato12S    "SP Giolo [%.1f °C]" <temperature> (gTermoumidostatoLetto) ["Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht12s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"]}
+Number AttTestina12          "Att. testina Elettrotermica Giolo [MAP(testina.map):%s]"  <settings> (gTermoumidostatoLetto) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:TestTht12:number" }
+Number AllarmeTht12          "Allarme Letto [MAP(alarm.map):%s]" <settings> (gTermoumidostatoLetto) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht12:number" }
+Number StatoRele12           "Relay Trmst Giolo [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoLetto) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht12:number" }
+Number FeedBRele12           "Trmst Giolo [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoLetto) { channel="modbus:data:termo_bridge:termo_poller03:FReleTht12:number" }
+Number ONTht12               "Trmst ON Giolo" <settings> (gTermoumidostatoLetto){ channel="modbus:data:termo_bridge:termo_poller03:OnTht12:number" }
+Number OFFTht12              "Trmst OFF Giolo" <settings> (gTermoumidostatoLetto) { channel="modbus:data:termo_bridge:termo_poller03:OffTht12:number" }
+Switch ProxyAttTermo12       "Att./Dis. Trmst Giolo" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo12
+String ProxyTempAttTermo12   "Attendi ...."
+String Riepilogo12 
+
+Number:Temperature Termoumidostato13T    "T.Eleonora [%.1f °C]" <temperature> (gTermoumidostatoEleonora, gTemperature)["Measurement","Temperature"]{unit="°C", channel="modbus:data:termo_bridge:termo_poller07:Tht13t:number" }
+Number Termoumidostato13U    "U.Eleonora [%.1f %%]"   <humidity> (gTermoumidostatoEleonora, gTemperature) ["Measurement", "Humidity"] { channel="modbus:data:termo_bridge:termo_poller07:Tht13u:number" }
+Number Termoumidostato13S    "SP Eleonora [%.1f °C]"  <temperature> (gTermoumidostatoEleonora)  ["Setpoint", "Temperature"] { channel="modbus:data:termo_bridge:termo_poller08:Tht13s:number", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item", widget="oh-stepper-card" [step="1", min="21", max="27"] }
+Number AttTestina13          "Att. testina Elettrotermica Eleonora [MAP(testina.map):%s]"  <settings> (gTermoumidostatoEleonora) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:TestTht13:number" }
+Number AllarmeTht13          "Allarme Eleonora [MAP(alarm.map):%s]" <settings> (gTermoumidostatoEleonora) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:AllTht13:number" }
+Number StatoRele13           "Relay Trmst Eleonora [MAP(statorele.map):%s]"  <settings> (gTermoumidostatoEleonora) ["Status"] { channel="modbus:data:termo_bridge:termo_poller03:ReleTht13:number" }
+Number FeedBRele13           "Trmst Eleonora [MAP(feedbackr.map):%s]"  <settings> (gTermoumidostatoEleonora)  { channel="modbus:data:termo_bridge:termo_poller03:FReleTht13:number" }
+Number ONTht13               "Trmst ON Eleonora" <settings> (gTermoumidostatoEleonora)  { channel="modbus:data:termo_bridge:termo_poller03:OnTht13:number" }
+Number OFFTht13              "Trmst OFF Eleonora" <settings> (gTermoumidostatoEleonora) { channel="modbus:data:termo_bridge:termo_poller03:OffTht13:number" }
+Switch ProxyAttTermo13       "Att./Dis. Trmst Eleonora" (gProxyAtt) <settings>
+Number ProxyWatingAttTermo13
+String ProxyTempAttTermo13   "Attendi ...."
+String Riepilogo13 
+
+Number StatoPDC "Stato PDC [MAP(statopdc.map):%s]" <poweroutlet> (GLocaleTecnico) { channel="modbus:data:pdc_bridge:pdc_poller03:StatoPDC:number"}
+Number ModalitaPDC "Modalita  [MAP(modalitapdc.map):%s]" <settings> (GLocaleTecnico) { channel="modbus:data:pdc_bridge:pdc_poller03:ModoPDC:number"}

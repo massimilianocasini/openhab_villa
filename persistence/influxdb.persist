@@ -5,8 +5,11 @@ Strategies
 	everyHour : "0 0 * * * ?"
 	everyDay : "0 0 0 * * ?"
 
+<<<<<<< HEAD
+=======
 	// if no strategy is specified for an Item entry below, the default list will be used
 	default = everyChange
+>>>>>>> 41fbcb2dc5539d9c9933a2433377aba8de4480c6
 }
 
 /*
@@ -20,4 +23,8 @@ Strategies
 Items
 {
 	gInfluxdb* : strategy =  everyMinute, restoreOnStartup
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 41fbcb2dc5539d9c9933a2433377aba8de4480c6

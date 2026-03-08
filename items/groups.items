@@ -1,3 +1,97 @@
+<<<<<<< HEAD
+// ============================================================
+// GRUPPI GENERICI / UTILITY
+// ============================================================
+Group gAstroRadation   "Astro"
+Group gTemperature     "Temperature Graph"
+Group gNetwork         "Network Appliance"
+Group gInfluxdb        "InfluxDB"
+Group gModbus          "Modbus dispositivi" ["ModbusDevices"]
+Group gPhaseL1
+Group gPhaseL2
+Group gPhaseL3
+Group gCar             "Car" ["Car"]
+
+// ============================================================
+// GRUPPI MEDIA TEMPERATURE
+// ============================================================
+Group:Number:AVG gAvgTemperatura "Temperatura media [%.1f °C]"
+Group:Number:AVG gAvgTempPI      "Temp.media PI"
+Group:Number:AVG gAvgTempPT      "Temp.media PT"
+Group:Number:AVG gAvgTempP1      "Temp.media P1"
+
+// ============================================================
+// GERARCHIA LOCATION
+// ============================================================
+Group gEsterno "Esterno Villa" ["Outdoor"]
+    Group gLocaleTecnicoPiscina "Locale tecnico piscina" (gEsterno) ["BoilerRoom"]
+
+Group gInterno "Interno Villa" ["Indoor"]
+
+    Group gPianoInterrato "Piano interrato" (gInterno) ["Basement"]
+        Group gBiliardo    "Biliardo"    (gPianoInterrato) ["Room"]
+        Group gAntibagnoPI "Antibagno PI" (gPianoInterrato) ["Bathroom"]
+        Group gGarage      "Garage"       (gPianoInterrato) ["Garage"]
+
+    Group gPianoTerra "Piano terra" (gInterno) ["GroundFloor"]
+        Group gAngoloTV      "Angolo TV"              (gPianoTerra) ["LivingRoom"]
+        Group gAntibagnoPT   "Antibagno PT"            (gPianoTerra) ["Bathroom"]
+        Group gSoggiorno     "Soggiorno"               (gPianoTerra) ["LivingRoom"]
+        Group gAppArancione  "Appartamento arancione"  (gPianoTerra) ["Bedroom"]
+        Group gCucina        "Cucina"                  (gPianoTerra) ["Kitchen"]
+        Group GLocaleTecnico "Locale Tecnico PT"       (gPianoTerra) ["BoilerRoom"]
+
+    Group gPrimoPiano "Piano primo" (gInterno) ["FirstFloor"]
+        Group gLetto      "Camera da letto"       (gPrimoPiano) ["Bedroom"]
+        Group gArianna    "Camera Arianna"         (gPrimoPiano) ["Bedroom"]
+        Group gAppRosso   "Appartamento rosso"     (gPrimoPiano) ["Bedroom"]
+        Group gAppVerde   "Appartamento verde"     (gPrimoPiano) ["Bedroom"]
+        Group gEleonora   "Camera Eleonora"        (gPrimoPiano) ["Bedroom"]
+        Group gCorridoio  "Corridoio P1"           (gPrimoPiano) ["Corridor"]
+
+// ============================================================
+// GERARCHIA HVAC
+// NOTA: i Group termostato appartengono SOLO alla loro Location
+// per evitare il conflitto semantico Equipment/Location.
+// La membership a gHVAC è garantita dagli item interni
+// tramite i Group funzionali (gFeedBRele, gONTht, ecc.)
+// ============================================================
+Group gHVAC  "Controllo temperature" ["HVAC"]
+Group gPompe "Pompe" (gHVAC) ["Pump"]
+
+// Termostato PI
+Group gTermoumidostatoBiliardo    "Termoumidostato Biliardo"    (gBiliardo)   ["HVAC"]
+Group gTermoumidostatoAntiBagnoPI "Termoumidostato AntiBagno PI" (gAntibagnoPI) ["HVAC"]
+
+// Termostati PT
+Group gTermoumidostatoAngoloTV    "Termoumidostato Angolo TV"        (gAngoloTV)    ["HVAC"]
+Group gTermoumidostatoAntiBagnoPT "Termoumidostato Bagno PT"         (gAntibagnoPT) ["HVAC"]
+Group gTermoumidostatoSoggiorno   "Termoumidostato Soggiorno"        (gSoggiorno)   ["HVAC"]
+Group gTermoumidostatoAppArancione "Termoumidostato App. Arancione"  (gAppArancione) ["HVAC"]
+Group gTermoumidostatoCucina      "Termoumidostato Cucina"           (gCucina)      ["HVAC"]
+
+// Termostati P1
+Group gTermoumidostatoLetto     "Termoumidostato Letto"       (gLetto)    ["HVAC"]
+Group gTermoumidostatoArianna   "Termoumidostato Arianna"     (gArianna)  ["HVAC"]
+Group gTermoumidostatoAppRosso  "Termoumidostato App. Rosso"  (gAppRosso) ["HVAC"]
+Group gTermoumidostatoAppVerde  "Termoumidostato App. Verde"  (gAppVerde) ["HVAC"]
+Group gTermoumidostatoEleonora  "Termoumidostato Eleonora"    (gEleonora) ["HVAC"]
+Group gTermoumidostatoCorridoio "Termoumidostato Corridoio"   (gCorridoio) ["HVAC"]
+
+// ============================================================
+// GRUPPI FUNZIONALI PER REGOLE GENERICHE
+// (usati nelle regole refactorizzate di termostati.rules)
+// ============================================================
+Group gProxyAtt    // Switch ProxyAttTermo1..13
+Group gFeedBRele   // Number FeedBRele1..13
+Group gONTht       // Number ONTht1..13
+Group gOFFTht      // Number OFFTht1..13
+Group gProxyWating // Number ProxyWatingAttTermo1..13
+Group gTempT       // Number:Temperature Termoumidostato1T..13T
+Group gStatoRele   // Number StatoRele1..13
+Group gSetpoint    // Number Termoumidostato1S..13S
+Group gRiepilogo   // String Riepilogo1..13
+=======
 Group gAstroRadation "Astro"
 Group gTemperature "Temperature Graph"
 Group gNetwork "Network Appliance" ["NetworkAppliance"]
@@ -54,3 +148,4 @@ Group gTermoumidostatoAppRosso  "Termoumidostato App. Rosso" (gAppRosso, gHVAC) 
 Group gTermoumidostatoAppVerde "Termoumidostato App. Verde" (gAppVerde, gHVAC) ["HVAC"]
 Group gTermoumidostatoEleonora  "Termoumidostato Eleonora" (gEleonora, gHVAC) ["HVAC"]
 Group gTermoumidostatoCorridoio "Termoumidostato Corridoio" (gCorridoio, gHVAC) ["HVAC"]
+>>>>>>> 41fbcb2dc5539d9c9933a2433377aba8de4480c6

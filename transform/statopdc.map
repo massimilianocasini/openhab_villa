@@ -1,4 +1,9 @@
 0=OFF
 1=ON
 2=ENERGY SAVE
+<<<<<<< HEAD
 3=AUTO
+NULL=N/D
+=======
+3=AUTO
+>>>>>>> 41fbcb2dc5539d9c9933a2433377aba8de4480c6

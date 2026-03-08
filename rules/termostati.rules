@@ -1,0 +1,138 @@
+// ============================================================
+// REGOLE TERMOSTATI - versione refactorizzata
+// Da 39 regole originali a 5 regole generiche
+// ============================================================
+
+// ------------------------------------------------------------
+// REGOLA 1: Attiva/Disattiva termostato (generico)
+// Sostituisce le 13 regole "Attiva/Disattiva termostato N"
+// ------------------------------------------------------------
+rule "Attiva/Disattiva termostato (generico)"
+    when
+        Member of gProxyAtt received update ON
+    then
+        val idx = triggeringItem.name.replace("ProxyAttTermo", "")
+
+        val GenericItem feedItem    = gFeedBRele.members.findFirst[   GenericItem it | it.name == "FeedBRele"           + idx ]
+        val GenericItem onItem      = gONTht.members.findFirst[       GenericItem it | it.name == "ONTht"               + idx ]
+        val GenericItem offItem     = gOFFTht.members.findFirst[      GenericItem it | it.name == "OFFTht"              + idx ]
+        val GenericItem waitingItem = gProxyWating.members.findFirst[ GenericItem it | it.name == "ProxyWatingAttTermo" + idx ]
+
+        if (feedItem === null || onItem === null || offItem === null || waitingItem === null) {
+            logWarn("Termostati", "Item non trovato per indice: " + idx)
+            return;
+        }
+
+        if (feedItem.state == 0) {
+            onItem.sendCommand(1)
+        } else {
+            offItem.sendCommand(1)
+        }
+        waitingItem.postUpdate(0)
+    end
+
+// ------------------------------------------------------------
+// REGOLA 2: Feedback stato termostato (generico, cambio in tempo reale)
+// Sostituisce le 13 regole "Attiva/Disattiva termostato N temp"
+// NOTA: System started è gestito separatamente nella Regola 3
+// ------------------------------------------------------------
+rule "Feedback stato termostato (generico)"
+    when
+        Member of gFeedBRele changed
+    then
+        val idx = triggeringItem.name.replace("FeedBRele", "")
+        val GenericItem waitingItem = gProxyWating.members.findFirst[ GenericItem it | it.name == "ProxyWatingAttTermo" + idx ]
+
+        if (waitingItem === null) {
+            logWarn("Termostati", "WaitingItem non trovato per indice: " + idx)
+            return;
+        }
+
+        if (triggeringItem.state == 0) {
+            waitingItem.postUpdate(3)
+        } else {
+            waitingItem.postUpdate(4)
+        }
+    end
+
+// ------------------------------------------------------------
+// REGOLA 3: Inizializzazione stato termostati all'avvio
+// Necessaria perché con System started triggeringItem è null
+// ------------------------------------------------------------
+rule "Init stato termostati ad avvio"
+    when
+        System started
+    then
+        gFeedBRele.members.forEach[ GenericItem feedItem |
+            val idx = feedItem.name.replace("FeedBRele", "")
+            val GenericItem waitingItem = gProxyWating.members.findFirst[ GenericItem it | it.name == "ProxyWatingAttTermo" + idx ]
+            if (waitingItem !== null) {
+                if (feedItem.state == 0) {
+                    waitingItem.postUpdate(3)
+                } else {
+                    waitingItem.postUpdate(4)
+                }
+            }
+        ]
+    end
+
+// ------------------------------------------------------------
+// REGOLA 4: Riepilogo termostati (aggiornamento periodico)
+// Sostituisce le 13 regole "Tutto su una riga N"
+// Un solo cron al posto di 13 cron paralleli
+// ------------------------------------------------------------
+rule "Riepilogo termostati (aggiornamento periodico)"
+    when
+        Time cron "0 0/1 * 1/1 * ? *"
+    then
+        gFeedBRele.members.sortBy[ name ].forEach[ GenericItem feedItem |
+            val idx = feedItem.name.replace("FeedBRele", "")
+
+            val GenericItem tempItem      = gTempT.members.findFirst[     GenericItem it | it.name == "Termoumidostato" + idx + "T" ]
+            val GenericItem releItem      = gStatoRele.members.findFirst[ GenericItem it | it.name == "StatoRele"       + idx ]
+            val GenericItem setpItem      = gSetpoint.members.findFirst[  GenericItem it | it.name == "Termoumidostato" + idx + "S" ]
+            val GenericItem riepilogoItem = gRiepilogo.members.findFirst[ GenericItem it | it.name == "Riepilogo"       + idx ]
+
+            if (tempItem === null || releItem === null || setpItem === null || riepilogoItem === null) {
+                logWarn("Termostati", "Item mancante per riepilogo, indice: " + idx)
+                return;
+            }
+
+            riepilogoItem.postUpdate(
+                "T:" + tempItem.state +
+                " - Set:" + setpItem.state +
+                " - Trm:" + feedItem.state +
+                " - Relè:" + releItem.state
+            )
+        ]
+    end
+
+// ------------------------------------------------------------
+// REGOLA 5: Riepilogo termostati all'avvio
+// Popola i Riepilogo subito senza aspettare il primo cron
+// ------------------------------------------------------------
+rule "Init riepilogo termostati ad avvio"
+    when
+        System started
+    then
+        gFeedBRele.members.sortBy[ name ].forEach[ GenericItem feedItem |
+            val idx = feedItem.name.replace("FeedBRele", "")
+
+            val GenericItem tempItem      = gTempT.members.findFirst[     GenericItem it | it.name == "Termoumidostato" + idx + "T" ]
+            val GenericItem releItem      = gStatoRele.members.findFirst[ GenericItem it | it.name == "StatoRele"       + idx ]
+            val GenericItem setpItem      = gSetpoint.members.findFirst[  GenericItem it | it.name == "Termoumidostato" + idx + "S" ]
+            val GenericItem riepilogoItem = gRiepilogo.members.findFirst[ GenericItem it | it.name == "Riepilogo"       + idx ]
+
+            if (tempItem === null || releItem === null || setpItem === null || riepilogoItem === null) {
+                logWarn("Termostati", "Item mancante per riepilogo iniziale, indice: " + idx)
+                return;
+            }
+
+            riepilogoItem.postUpdate(
+                "T:" + tempItem.state +
+                " - Set:" + setpItem.state +
+                " - Trm:" + feedItem.state +
+                " - Relè:" + releItem.state
+            )
+        ]
+    end

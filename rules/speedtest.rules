@@ -7,4 +7,8 @@ rule "Invia risultato Speedtest a Telegram"
     if (url != "NULL" && url != "UNDEF" && telegramActions !== null) {
         telegramActions.sendTelegramPhoto(url + ".png", "Speedtest completato: " + url)
     }
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 41fbcb2dc5539d9c9933a2433377aba8de4480c6

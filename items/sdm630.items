@@ -1,0 +1,66 @@
+Number:ElectricPotential SDM_L1_Tensione "Tensione L1 [%.2f V]" <energy> (gModbus, gPhaseL1, gInfluxdb) {unit="V",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L1_volt:number"}
+Number:ElectricPotential SDM_L2_Tensione "Tensione L2 [%.2f V]" <energy> (gModbus, gPhaseL2, gInfluxdb) {unit="V",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L2_volt:number"}
+Number:ElectricPotential SDM_L3_Tensione "Tensione L3 [%.2f V]" <energy> (gModbus, gPhaseL3, gInfluxdb) {unit="V",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L3_volt:number"}
+Number:ElectricCurrent SDM_L1_Corrente "Corrente L1 [%.2f A]" <energy> (gModbus, gPhaseL1, gInfluxdb) {unit="A",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L1_amp:number"}
+Number:ElectricCurrent SDM_L2_Corrente "Corrente L2 [%.2f A]" <energy> (gModbus, gPhaseL2, gInfluxdb) {unit="A",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L2_amp:number"}
+Number:ElectricCurrent SDM_L3_Corrente "Corrente L3 [%.2f A]" <energy> (gModbus, gPhaseL3, gInfluxdb) {unit="A",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L3_amp:number"}
+Number:Power SDM_L1_Energia "Potenza L1 [%.2f W]" <energy> (gModbus, gPhaseL1,  gInfluxdb) {unit="W",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L1_power:number"}
+Number:Power SDM_L2_Energia "Potenza L2 [%.2f W]" <energy> (gModbus, gPhaseL2,  gInfluxdb) {unit="W",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L2_power:number"}
+Number:Power SDM_L3_Energia "Potenza L3 [%.2f W]" <energy> (gModbus, gPhaseL3,  gInfluxdb) {unit="W",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L3_power:number"}
+Number:Power SDM_L1_PotenzaApparente "PotenzaApparente L1 [%.2f VA]" <energy> (gModbus, gPhaseL1, gInfluxdb) {unit="VA",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L1_va:number"}
+Number:Power SDM_L2_PotenzaApparente "PotenzaApparente L2 [%.2f VA]" <energy> (gModbus, gPhaseL2, gInfluxdb) {unit="VA",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L2_va:number"}
+Number:Power SDM_L3_PotenzaApparente "PotenzaApparente L3 [%.2f VA]" <energy> (gModbus, gPhaseL3, gInfluxdb) {unit="VA",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L3_va:number"}
+Number:Power SDM_L1_PotenzaReattiva "PotenzaReattiva L1 [%.2f VAr]" <energy> (gModbus, gPhaseL1, gInfluxdb) {unit="var",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L1_var:number"}
+Number:Power SDM_L2_PotenzaReattiva "PotenzaReattiva L2 [%.2f VAr]" <energy> (gModbus, gPhaseL2, gInfluxdb) {unit="var",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L2_var:number"}
+Number:Power SDM_L3_PotenzaReattiva "PotenzaReattiva L3 [%.2f VAr]" <energy> (gModbus, gPhaseL3, gInfluxdb) {unit="var",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L3_var:number"}
+Number:Dimensionless SDM_L1_FattoreDiPotenza "FattoreDiPotenza L1 [%.2f]" <energy> (gModbus, gPhaseL1, gInfluxdb) {channel="modbus:data:sdm630_basis:BasisWerte:sdm_L1_powerfactor:number"}
+Number:Dimensionless SDM_L2_FattoreDiPotenza "FattoreDiPotenza L2 [%.2f]" <energy> (gModbus, gPhaseL2, gInfluxdb) {channel="modbus:data:sdm630_basis:BasisWerte:sdm_L2_powerfactor:number"}
+Number:Dimensionless SDM_L3_FattoreDiPotenza "FattoreDiPotenza L3 [%.2f]" <energy> (gModbus, gPhaseL3, gInfluxdb) {channel="modbus:data:sdm630_basis:BasisWerte:sdm_L3_powerfactor:number"}
+Number:Angle SDM_L1_AngoloFase "AngoloFase L1 [%.2f °]" <energy> (gModbus, gPhaseL1, gInfluxdb) {unit="°",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L1_phase_angle:number"}
+Number:Angle SDM_L2_AngoloFase "AngoloFase L2 [%.2f °]" <energy> (gModbus, gPhaseL2, gInfluxdb) {unit="°",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L2_phase_angle:number"}
+Number:Angle SDM_L3_AngoloFase "AngoloFase L3 [%.2f °]" <energy> (gModbus, gPhaseL3, gInfluxdb) {unit="°",channel="modbus:data:sdm630_basis:BasisWerte:sdm_L3_phase_angle:number"}
+Number:ElectricPotential SDM_Tensione_Media_L1_L2_L3 "Tensione Media L1-L2-L3 [%.2f V]" <energy> (gModbus, gInfluxdb) {unit="V",channel="modbus:data:sdm630_basis:BasisWerte:sdm_average_line_to_neutral_voltage:number"}
+Number:ElectricCurrent SDM_Corrente_Media_L1_L2_L3 "Corrente Media L1-L2-L3 [%.2f A]" <energy> (gModbus, gInfluxdb) {unit="A",channel="modbus:data:sdm630_basis:BasisWerte:sdm_average_line_current:number"}
+Number:ElectricCurrent SDM_Corrente_Somma_Media_L1_L2_L3 "Corrente Somma Media L1-L2-L3 [%.2f A]" <energy> (gModbus, gInfluxdb) {unit="A",channel="modbus:data:sdm630_basis:BasisWerte:sdm_average_sum_of_line_current:number"}
+
+Number:Power SDM_SystemPower "Potenza attualmente richiesta totale [%.2f W]" <energy> (gModbus, gInfluxdb) {unit="W",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_totalsystemPower:number"}
+Number:Power SDM_SystemVA "Potenza apparente totale [%.2f VA]" <energy> (gModbus, gInfluxdb) {unit="VA",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_totalsystem_VA:number"}
+Number:Power SDM_SystemVAr "Potenza reattiva totale [%.2f VAr]" <energy> (gModbus, gInfluxdb) {unit="var",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_totalsystem_VAr:number"}
+Number:Dimensionless SDM_SystemPower_FattoreDiPotenza "Fattore di potenza totale [%.2f]" <energy> (gModbus, gInfluxdb) {channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_totalsystem_pf:number"}
+Number:Angle SDM_SystemPower_AngoloFase "Angolo di fase totale [%.2f °]" <energy> (gModbus, gInfluxdb) {unit="°",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_totalsystem_fa:number"}
+Number:Frequency SDM_Frequenz "Frequenza [%.2f Hz]" <energy> (gModbus,  gInfluxdb) {unit="Hz",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_frequency_supply:number"}
+//Number:Power SDM_Total_Import "Potenza importata totale [%.2f W]" <energy> (gModbus, gInfluxdb) {unit="W",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_total_import_kWh:number"}
+//Number:Power SDM_Total_Export "Potenza esportata totale [%.2f W]" <energy> (gModbus, gInfluxdb) {unit="W",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_total_export_kWh:number"}
+//Number:Power SDM_Total_Import_kvarh "Potenza reattiva importata totale [%.2f kVArh]" <energy> (gModbus, gInfluxdb) {unit="kvar",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_total_import_kvarh:number"}
+//Number:Power SDM_Total_Export_kvarh "Potenza reattiva esportata totale [%.2f kVArh]" <energy> (gModbus, gInfluxdb) {unit="kvar",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_total_export_kvarh:number"}
+Number:ElectricCharge SDM_Total_VAh "Potenza apparente/h totale [%.2f kVArh]" <energy> (gModbus,  gInfluxdb) {unit="Ah",channel="modbus:data:sdm630_SystemPower:SystemPower:sdm_Ah:number"}
+
+Number:Dimensionless SDM_Fase1_LN_V_THD "Distorsione armonica totale Fase 1 / Neutro [%.2f %]" <energy> (gModbus, gPhaseL1, gInfluxdb) {unit="%",channel="modbus:data:sdm630_3:sdm_3:sdm_phase1_LN_V_THD:number"}
+Number:Dimensionless SDM_Fase2_LN_V_THD "Distorsione armonica totale Fase 2 / Neutro [%.2f %]" <energy> (gModbus, gPhaseL2, gInfluxdb) {unit="%",channel="modbus:data:sdm630_3:sdm_3:sdm_phase2_LN_V_THD:number"}
+Number:Dimensionless SDM_Fase3_LN_V_THD "Distorsione armonica totale Fase 3 / Neutro [%.2f %]" <energy> (gModbus, gPhaseL3, gInfluxdb) {unit="%",channel="modbus:data:sdm630_3:sdm_3:sdm_phase3_LN_V_THD:number"}
+Number:Dimensionless SDM_Fase1_LN_I_THD "Distorsione armonica totale Fase 1 / Neutro [%.2f %]" <energy> (gModbus, gPhaseL1, gInfluxdb) {unit="%",channel="modbus:data:sdm630_3:sdm_3:sdm_phase1_LN_I_THD:number"}
+Number:Dimensionless SDM_Fase2_LN_I_THD "Distorsione armonica totale Fase 2 / Neutro [%.2f %]" <energy> (gModbus, gPhaseL3, gInfluxdb) {unit="%",channel="modbus:data:sdm630_3:sdm_3:sdm_phase2_LN_I_THD:number"}
+Number:Dimensionless SDM_Fase3_LN_I_THD "Distorsione armonica totale Fase 3 / Neutro [%.2f %]" <energy> (gModbus, gPhaseL3, gInfluxdb) {unit="%",channel="modbus:data:sdm630_3:sdm_3:sdm_phase3_LN_I_THD:number"}
+Number:Dimensionless SDM_Average_V_THD "Distorsione armonica Volt totale Line to Neutral [%.2f %]" <energy> (gModbus, gInfluxdb) {unit="%",channel="modbus:data:sdm630_3:sdm_3:sdm_average_V_THD:number"}
+Number:Dimensionless SDM_Average_I_THD "Distorsione armonica Corrente [%.2f %]" <energy> (gModbus, gInfluxdb) {unit="%",channel="modbus:data:sdm630_3:sdm_3:sdm_average_I_THD:number"}
+
+
+Number:Energy SDM_kwh_Totalkwh "Consumo totale kWh [%.2f kWh]" <energy> (gModbus,  gInfluxdb) {unit="kWh",channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_Totalkwh:number"}
+Number:Power SDM_kwh_Totalkvarh "Potenza reattiva totale totale kVArh [%.2f kVArh]" <energy> (gModbus, gInfluxdb) {unit="kvar", channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_Totalkvarh:number"}   
+Number SDM_kwh_L1_import_kWh "L1 Import [%.2f kWh]" <energy> (gModbus, gPhaseL1, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L1_import_kWh:number"}   
+Number SDM_kwh_L2_import_kWh "L2 Import [%.2f kWh]" <energy> (gModbus, gPhaseL2, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L2_import_kWh:number"}     
+Number SDM_kwh_L3_import_kWh "L3 Import [%.2f kWh]" <energy> (gModbus, gPhaseL3, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L3_import_kWh:number"}
+// Number SDM_kwh_L1_export_kWh  "L1 Export [%.2f kWh]" <energy> (gModbus, gPhaseL1, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L1_export_kWh:number"}  
+// Number SDM_kwh_L2_export_kWh  "L2 Export [%.2f kWh]" <energy> (gModbus, gPhaseL2, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L2_export_kWh:number"}
+// Number SDM_kwh_L3_export_kWh  "L3 Export [%.2f kWh]" <energy> (gModbus, gPhaseL3, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L3_export_kWh:number"}
+// Number SDM_kwh_L1_total_kWh   "L1 Gesamt [%.2f kWh]" <energy> (gModbus, gPhaseL1, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L1_total_kWh:number"}
+// Number SDM_kwh_L2_total_kWh   "L2 Gesamt [%.2f kWh]" <energy> (gModbus, gPhaseL2, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L2_total_kWh:number"}
+// Number SDM_kwh_L3_total_kWh   "L3 Gesamt [%.2f kWh]" <energy> (gModbus, gPhaseL3, gInfluxdb) {channel="modbus:data:sdm630_kWh:kWh:sdm_kwh_L3_total_kWh:number"}
+Number:Energy sdm_reset_tot_active_energy "Resettabile energia attiva totale [%.1f]" <energy> (gModbus, gInfluxdb) {unit="kWh", channel="modbus:data:sdm630_resettabili:resettable:sdm_reset_tot_active_energy:number"}
+Number sdm_reset_tot_reactive_energy "Resettabile energia reattiva totale [%.0f]" <energy> (gModbus, gInfluxdb) {channel="modbus:data:sdm630_resettabili:resettable:sdm_reset_tot_reactive_energy:number"}
+Number sdm_reset_import_active_energy "Resettabile import energia attiva totale [%.0f]" <energy> (gModbus, gInfluxdb) {channel="modbus:data:sdm630_resettabili:resettable:sdm_reset_import_active_energy:number"}
+Number sdm_reset_export_active_energy "Resettabile export energia attiva totale [%.0f]" <energy> (gModbus, gInfluxdb) {channel="modbus:data:sdm630_resettabili:resettable:sdm_reset_export_active_energy:number"}
+Number sdm_reset_import_reactive_energy "Resettabile import energia reattiva totale [%.0f]" <energy> (gModbus, gInfluxdb) {channel="modbus:data:sdm630_resettabili:resettable:sdm_reset_import_reactive_energy:number"}
+Number sdm_reset_export_reactive_energy "Resettabile export energia reattiva totale [%.0f]" <energy> (gModbus, gInfluxdb) {channel="modbus:data:sdm630_resettabili:resettable:sdm_reset_export_reactive_energy:number"}
+
+Number ResetEnergy "Reset energia" { channel="modbus:data:sdm630_reset:energyReset:resetEnergy:number" }

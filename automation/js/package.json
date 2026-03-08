@@ -1,5 +1,9 @@
 {
   "dependencies": {
+<<<<<<< HEAD
+    "openhab_rules_tools": "^2.1.0"
+=======
     "openhab_rules_tools": "^2.0.3"
+>>>>>>> 41fbcb2dc5539d9c9933a2433377aba8de4480c6
   }
 }

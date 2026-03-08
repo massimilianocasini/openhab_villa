@@ -1,0 +1,9 @@
+rule "Reset energia SDM630"
+when
+    Time cron "0 0 0 ? * * *"
+then
+    ResetEnergy.sendCommand(3)      // invia il reset
+    createTimer(now.plusSeconds(2), [|
+        ResetEnergy.sendCommand(0)  // riporta a zero dopo 2 secondi
+    ])
+end
