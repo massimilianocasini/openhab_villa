@@ -11,8 +11,5 @@ rule "Invia messaggio a BOT per device IP persa"
     else {
         telegramActions.sendTelegram("Host " + hostLabel + " perso dalla rete VILLA !!!!")
     }
-<<<<<<< HEAD
+
 end
-=======
-end
->>>>>>> 41fbcb2dc5539d9c9933a2433377aba8de4480c6

@@ -1,6 +1,0 @@
-/* Image Cam1_snap {channel="ipcamera:ONVIF:19216812:image"}
-
-Image Cam1_imageD {channel="ipcamera:DAHUA:8f8e1694:image"}
-String Cam1_rtsp {channel="ipcamera:DAHUA:8f8e1694:videourl"}
-String Cam1_mjpg {channel="ipcamera:ONVIF:19216812:streamUrl"}
-String Cam1_imgurl {channel="ipcamera:ONVIF:19216812:imageUrl"} */
