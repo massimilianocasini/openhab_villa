@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
 Simulatore Modbus TCP per openHAB - pymodbus 3.12
+
+openhabian@openhabian:/etc/openhab/simulatore_modbus $ python3 modbus_simulator.py
+
 ==================================================
 192.168.188.54:5020  ->  termo_bridge  (unit_id=1)
 192.168.188.54:5021  ->  pdc_bridge    (unit_id=1)
@@ -77,7 +80,7 @@ ADDR_S = list(range(101, 114))
 # layout: +0=Test +1=All +2=Rele(StatoRele) +3=FRele(FeedBRele) +4=On +5=Off
 COIL_BASE = [79 + n * 6 for n in range(10)] + [165, 171, 177]
 
-FRELE_DELAY = 10   # secondi di ritardo prima di aggiornare FReleTht
+FRELE_DELAY = 3   # secondi di ritardo prima di aggiornare FReleTht
 
 
 # ============================================================

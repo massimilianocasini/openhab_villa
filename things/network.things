@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 Thing network:servicedevice:opensprinkler [ hostname="192.168.1.153", port=80, retry=3, refreshInterval=60000]
->>>>>>> 41fbcb2dc5539d9c9933a2433377aba8de4480c6
 Thing network:servicedevice:plcriscaldamento [ hostname="192.168.1.160", port=80, retry=3, refreshInterval=60000 ]
 Thing network:servicedevice:dahuatvcc [ hostname="192.168.1.2", port=80, retry=5, refreshInterval=60000 ]
 Thing network:servicedevice:plcpompadicalore [ hostname="192.168.1.150", port=80, retry=3, refreshInterval=60000 ]
