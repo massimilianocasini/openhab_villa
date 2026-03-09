@@ -1,0 +1,55 @@
+// ============================================================
+// rrd4j.persist - Persistenza per termostati e PDC
+// /etc/openhab/persistence/rrd4j.persist
+// ============================================================
+
+Strategies {
+    everyMinute : "0 * * * * ?"
+    everyHour   : "0 0 * * * ?"
+    everyDay    : "0 0 0 * * ?"
+
+}
+
+Items {
+
+    // ── Temperature termostati (1-13) ──────────────────────
+    Termoumidostato1T,
+    Termoumidostato2T,
+    Termoumidostato3T,
+    Termoumidostato4T,
+    Termoumidostato5T,
+    Termoumidostato6T,
+    Termoumidostato7T,
+    Termoumidostato8T,
+    Termoumidostato9T,
+    Termoumidostato10T,
+    Termoumidostato11T,
+    Termoumidostato12T,
+    Termoumidostato13T      : strategy = everyMinute, restoreOnStartup
+
+    // ── Umidità termostati (1-13) ───────────────────────────
+    Termoumidostato1U,
+    Termoumidostato2U,
+    Termoumidostato3U,
+    Termoumidostato4U,
+    Termoumidostato5U,
+    Termoumidostato6U,
+    Termoumidostato7U,
+    Termoumidostato8U,
+    Termoumidostato9U,
+    Termoumidostato10U,
+    Termoumidostato11U,
+    Termoumidostato12U,
+    Termoumidostato13U      : strategy = everyMinute, restoreOnStartup
+
+    
+    // ── PDC - temperature acqua ─────────────────────────────
+    TempAccImpianto,
+    TempContrACS,
+    TempMandGeo,
+    TempRitGeo,
+    TempUscitaScambCircImp,
+    TempIngressoScambCircPrim : strategy = everyMinute, restoreOnStartup
+
+    
+}

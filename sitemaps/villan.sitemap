@@ -1,0 +1,189 @@
+sitemap villan label="🏠 Villa" {
+
+    // ── Riepilogo impianto ───────────────────────────────────
+    Frame label="Impianto" {
+        Text item=StatoPDC      label="Pompa di calore [MAP(statopdc.map):%s]"    icon="climate"
+        Text item=ModalitaPDC   label="Modalità [MAP(modalitapdc.map):%s]"         icon="settings"
+        Text item=AllarmeGenerale label="Allarme [MAP(alarm.map):%s]"              icon="alarm"
+        Text item=TempAccImpianto  label="T. accumulo [%.1f °C]"                   icon="temperature"
+        Text item=TempContrACS     label="T. ACS [%.1f °C]"                        icon="temperature_hot"
+    }
+
+    // ── Zone ────────────────────────────────────────────────
+    Frame label="Zone riscaldamento" {
+        Text item=StatoFZ1 label="Piano Interrato [MAP(zone.map):%s]"  icon="groundfloor"
+        Text item=StatoFZ2 label="Piano Terra [MAP(zone.map):%s]"      icon="groundfloor"
+        Text item=StatoFZ3 label="Piano Primo [MAP(zone.map):%s]"      icon="firstfloor"
+    }
+
+    // ── Piano Interrato ──────────────────────────────────────
+    Frame label="🔽 Piano Interrato" {
+        // Biliardo
+        Text label="Biliardo  [%.1f °C]" item=Termoumidostato1T icon="temperature"
+             labelcolor=[FeedBRele1==1="green", FeedBRele1==0="red"] {
+            Text  item=Termoumidostato1T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato1U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele1         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele1         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato1S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo1 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo1==3]
+            Switch item=ProxyAttTermo1 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo1==4]
+        }
+        // Antibagno PI
+        Text label="Antibagno PI  [%.1f °C]" item=Termoumidostato2T icon="temperature"
+             labelcolor=[FeedBRele2==1="green", FeedBRele2==0="red"] {
+            Text  item=Termoumidostato2T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato2U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele2         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele2         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato2S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo2 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo2==3]
+            Switch item=ProxyAttTermo2 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo2==4]
+        }
+    }
+
+    // ── Piano Terra ──────────────────────────────────────────
+    Frame label="🔼 Piano Terra" {
+        // App. arancione
+        Text label="App. arancione  [%.1f °C]" item=Termoumidostato3T icon="temperature"
+             labelcolor=[FeedBRele3==1="green", FeedBRele3==0="red"] {
+            Text  item=Termoumidostato3T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato3U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele3         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele3         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato3S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo3 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo3==3]
+            Switch item=ProxyAttTermo3 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo3==4]
+        }
+        // AngoloTV
+        Text label="AngoloTV  [%.1f °C]" item=Termoumidostato4T icon="temperature"
+             labelcolor=[FeedBRele4==1="green", FeedBRele4==0="red"] {
+            Text  item=Termoumidostato4T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato4U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele4         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele4         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato4S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo4 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo4==3]
+            Switch item=ProxyAttTermo4 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo4==4]
+        }
+        // Antibagno PT
+        Text label="Antibagno PT  [%.1f °C]" item=Termoumidostato5T icon="temperature"
+             labelcolor=[FeedBRele5==1="green", FeedBRele5==0="red"] {
+            Text  item=Termoumidostato5T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato5U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele5         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele5         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato5S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo5 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo5==3]
+            Switch item=ProxyAttTermo5 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo5==4]
+        }
+        // Soggiorno
+        Text label="Soggiorno  [%.1f °C]" item=Termoumidostato6T icon="temperature"
+             labelcolor=[FeedBRele6==1="green", FeedBRele6==0="red"] {
+            Text  item=Termoumidostato6T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato6U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele6         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele6         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato6S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo6 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo6==3]
+            Switch item=ProxyAttTermo6 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo6==4]
+        }
+        // Cucina
+        Text label="Cucina  [%.1f °C]" item=Termoumidostato7T icon="temperature"
+             labelcolor=[FeedBRele7==1="green", FeedBRele7==0="red"] {
+            Text  item=Termoumidostato7T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato7U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele7         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele7         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato7S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo7 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo7==3]
+            Switch item=ProxyAttTermo7 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo7==4]
+        }
+    }
+
+    // ── Piano Primo ──────────────────────────────────────────
+    Frame label="⬆️ Piano Primo" {
+        // App. rosso
+        Text label="App. rosso  [%.1f °C]" item=Termoumidostato8T icon="temperature"
+             labelcolor=[FeedBRele8==1="green", FeedBRele8==0="red"] {
+            Text  item=Termoumidostato8T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato8U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele8         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele8         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato8S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo8 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo8==3]
+            Switch item=ProxyAttTermo8 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo8==4]
+        }
+        // App. verde
+        Text label="App. verde  [%.1f °C]" item=Termoumidostato9T icon="temperature"
+             labelcolor=[FeedBRele9==1="green", FeedBRele9==0="red"] {
+            Text  item=Termoumidostato9T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato9U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele9         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele9         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato9S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo9 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo9==3]
+            Switch item=ProxyAttTermo9 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo9==4]
+        }
+        // Corridoio
+        Text label="Corridoio  [%.1f °C]" item=Termoumidostato10T icon="temperature"
+             labelcolor=[FeedBRele10==1="green", FeedBRele10==0="red"] {
+            Text  item=Termoumidostato10T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato10U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele10         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele10         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato10S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo10 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo10==3]
+            Switch item=ProxyAttTermo10 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo10==4]
+        }
+        // Arianna
+        Text label="Arianna  [%.1f °C]" item=Termoumidostato11T icon="temperature"
+             labelcolor=[FeedBRele11==1="green", FeedBRele11==0="red"] {
+            Text  item=Termoumidostato11T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato11U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele11         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele11         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato11S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo11 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo11==3]
+            Switch item=ProxyAttTermo11 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo11==4]
+        }
+        // Giolo
+        Text label="Giolo  [%.1f °C]" item=Termoumidostato12T icon="temperature"
+             labelcolor=[FeedBRele12==1="green", FeedBRele12==0="red"] {
+            Text  item=Termoumidostato12T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato12U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele12         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele12         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato12S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo12 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo12==3]
+            Switch item=ProxyAttTermo12 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo12==4]
+        }
+        // Eleonora
+        Text label="Eleonora  [%.1f °C]" item=Termoumidostato13T icon="temperature"
+             labelcolor=[FeedBRele13==1="green", FeedBRele13==0="red"] {
+            Text  item=Termoumidostato13T  label="Temperatura [%.1f °C]"
+            Text  item=Termoumidostato13U  label="Umidità [%.1f %%]"
+            Text  item=FeedBRele13         label="Stato [MAP(feedbackr.map):%s]"  valuecolor=[1="green", 0="red"]
+            Text  item=StatoRele13         label="Rele [MAP(statorele.map):%s]"   valuecolor=[1="green", 0="red"]
+            Setpoint item=Termoumidostato13S label="Setpoint [%.1f °C]" minValue=10 maxValue=30 step=1
+            Switch item=ProxyAttTermo13 mappings=[ON="Attiva"]   visibility=[ProxyWatingAttTermo13==3]
+            Switch item=ProxyAttTermo13 mappings=[ON="Disattiva"] visibility=[ProxyWatingAttTermo13==4]
+        }
+    }
+
+    // ── Setpoint ACS ────────────────────────────────────────
+    Frame label="💧 Acqua sanitaria" {
+        Setpoint item=Set_temp_standard_condition_ACS   label="Setpoint ACS [%.1f °C]" minValue=40 maxValue=90 step=1
+        Text     item=TempContrACS                      label="T. attuale ACS [%.1f °C]"
+    }
+
+    // ── Pompe ────────────────────────────────────────────────
+    Frame label="⚙️ Pompe" {
+        Text item=PompaRicircolo      label="Ricircolo [MAP(pomp.map):%s]"      valuecolor=[1="green", 0="red"]
+        Text item=PompaPianoInterrato label="Piano Interrato [MAP(pomp.map):%s]" valuecolor=[1="green", 0="red"]
+        Text item=PompaPianoTerra     label="Piano Terra [MAP(pomp.map):%s]"     valuecolor=[1="green", 0="red"]
+        Text item=PompaPianoPrimo     label="Piano Primo [MAP(pomp.map):%s]"     valuecolor=[1="green", 0="red"]
+        Text item=PompaTermosifoni    label="Termosifoni [MAP(pomp.map):%s]"     valuecolor=[1="green", 0="red"]
+        Text item=PompaRilancio       label="Rilancio [MAP(pomp.map):%s]"        valuecolor=[1="green", 0="red"]
+    }
+}
