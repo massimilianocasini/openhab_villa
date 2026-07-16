@@ -2,8 +2,8 @@ sitemap villan label="🏠 Villa" {
 
     // ── Riepilogo impianto ───────────────────────────────────
     Frame label="Impianto" {
-        Text item=StatoPDC      label="Pompa di calore [MAP(statopdc.map):%s]"    icon="climate"
-        Text item=ModalitaPDC   label="Modalità [MAP(modalitapdc.map):%s]"         icon="settings"
+        Selection item=StatoPDC label="Pompa di calore [MAP(statopdc.map):%s]"      mappings=[0="OFF", 1="ON", 2="ENERGY SAVE", 3="AUTO"]                   icon="climate"
+        Selection item=ModalitaPDC label="Modalità [MAP(modalitapdc.map):%s]"       mappings=[0="SANITARIO", 1="INVERNO+SANITARIO", 2="ESTATE+SANITARIO"]   icon="settings"
         Text item=AllarmeGenerale label="Allarme [MAP(alarm.map):%s]"              icon="alarm"
         Text item=TempAccImpianto  label="T. accumulo [%.1f °C]"                   icon="temperature"
         Text item=TempContrACS     label="T. ACS [%.1f °C]"                        icon="temperature_hot"
@@ -11,9 +11,9 @@ sitemap villan label="🏠 Villa" {
 
     // ── Zone ────────────────────────────────────────────────
     Frame label="Zone riscaldamento" {
-        Text item=StatoFZ1 label="Piano Interrato [MAP(zone.map):%s]"  icon="groundfloor"
-        Text item=StatoFZ2 label="Piano Terra [MAP(zone.map):%s]"      icon="groundfloor"
-        Text item=StatoFZ3 label="Piano Primo [MAP(zone.map):%s]"      icon="firstfloor"
+        Selection item=StatoFZ1 label="Piano Interrato [MAP(zone.map):%s]"           mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"]                  icon="groundfloor"
+        Selection item=StatoFZ2 label="Piano Terra [MAP(zone.map):%s]"               mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"]                  icon="groundfloor"
+        Selection item=StatoFZ3 label="Piano Primo [MAP(zone.map):%s]"               mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"]                  icon="firstfloor"
     }
 
     // ── Piano Interrato ──────────────────────────────────────

@@ -1,15 +1,15 @@
 sitemap villa label="Benvenuto a CASA"
 {
         Frame label="Stato PDC" {
-            Selection item=StatoPDC mappings=[0="OFF", 1="ON", 2="ENERGY SAVE", 3="AUTO"]
-            Selection item=ModalitaPDC mappings=[0="SANITARIO", 1="INVERNO+SANITARIO", 2="ESTATE+SANITARIO"]
+            Selection item=StatoPDC mappings=[0="OFF", 1="ON", 2="ENERGY SAVE", 3="AUTO"] icon="climate"
+            Selection item=ModalitaPDC mappings=[0="SANITARIO", 1="INVERNO+SANITARIO", 2="ESTATE+SANITARIO"] icon="settings"
         }
         
         Frame label="Stato zone" {
             Default item=AllarmeGenerale
-            Selection item=StatoFZ1 mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"]
-            Selection item=StatoFZ2 mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"]
-            Selection item=StatoFZ3 mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"]
+            Selection item=StatoFZ1 mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"] icon="groundfloor"
+            Selection item=StatoFZ2 mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"] icon="groundfloor"
+            Selection item=StatoFZ3 mappings=[0="OFF", 1="COMFORT", 2="ECONOMY", 3="AUTO"] icon="firstfloor"
         }
 
         Frame label="Stato Ambienti" icon="party"{
