@@ -102,7 +102,6 @@ String Riepilogo3                       "Riepilogo App.arancione PT" (gRiepilogo
 
 // ============================================================
 // TERMOSTATO 4 - AngoloTV
-// NOTA: channel aggiornato da termo_poller05 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato4T    "T.AngoloTV [%.1f °C]" <temperature> (gTermoumidostatoAngoloTV, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht4t:number" }
 Number Termoumidostato4U                "U.AngoloTV [%.1f %%]" <humidity> (gTermoumidostatoAngoloTV, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht4u:number" }
@@ -120,7 +119,6 @@ String Riepilogo4                       "Riepilogo AngoloTV" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 5 - Antibagno PT
-// NOTA: channel aggiornato da termo_poller05 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato5T    "T.Antibagno PT [%.1f °C]" <temperature> (gTermoumidostatoAntiBagnoPT, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht5t:number" }
 Number Termoumidostato5U                "U.Antibagno PT [%.1f %%]" <humidity> (gTermoumidostatoAntiBagnoPT, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht5u:number" }
@@ -138,7 +136,6 @@ String Riepilogo5                       "Riepilogo Antibagno PT" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 6 - Soggiorno
-// NOTA: channel aggiornato da termo_poller05 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato6T    "T.Soggiorno [%.1f °C]" <temperature> (gTermoumidostatoSoggiorno, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht6t:number" }
 Number Termoumidostato6U                "U.Soggiorno [%.1f %%]" <humidity> (gTermoumidostatoSoggiorno, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht6u:number" }
@@ -156,7 +153,6 @@ String Riepilogo6                       "Riepilogo Soggiorno" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 7 - Cucina
-// NOTA: channel aggiornato da termo_poller06 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato7T    "T.Cucina [%.1f °C]" <temperature> (gTermoumidostatoCucina, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht7t:number" }
 Number Termoumidostato7U                "U.Cucina [%.1f %%]" <humidity> (gTermoumidostatoCucina, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht7u:number" }
@@ -174,7 +170,6 @@ String Riepilogo7                       "Riepilogo Cucina" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 8 - App.rosso
-// NOTA: channel aggiornato da termo_poller06 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato8T    "T.App.rosso [%.1f °C]" <temperature> (gTermoumidostatoAppRosso, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht8t:number" }
 Number Termoumidostato8U                "U.App.rosso [%.1f %%]" <humidity> (gTermoumidostatoAppRosso, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht8u:number" }
@@ -192,7 +187,6 @@ String Riepilogo8                       "Riepilogo App.rosso" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 9 - App.verde
-// NOTA: channel aggiornato da termo_poller06 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato9T    "T.App.verde [%.1f °C]" <temperature> (gTermoumidostatoAppVerde, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht9t:number" }
 Number Termoumidostato9U                "U.App.verde [%.1f %%]" <humidity> (gTermoumidostatoAppVerde, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht9u:number" }
@@ -210,7 +204,6 @@ String Riepilogo9                       "Riepilogo App.verde" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 10 - Corridoio
-// NOTA: channel aggiornato da termo_poller07 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato10T   "T.Corr. [%.1f °C]" <temperature> (gTermoumidostatoCorridoio, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht10t:number" }
 Number Termoumidostato10U               "U.Corr. [%.1f %%]" <humidity> (gTermoumidostatoCorridoio, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht10u:number" }
@@ -228,7 +221,6 @@ String Riepilogo10                      "Riepilogo Corridoio" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 11 - Arianna
-// NOTA: channel aggiornato da termo_poller07 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato11T   "T.Arianna [%.1f °C]" <temperature> (gTermoumidostatoArianna, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht11t:number" }
 Number Termoumidostato11U               "U.Arianna [%.1f %%]" <humidity> (gTermoumidostatoArianna, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht11u:number" }
@@ -246,7 +238,6 @@ String Riepilogo11                      "Riepilogo Arianna" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 12 - Giolo
-// NOTA: channel aggiornato da termo_poller07 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato12T   "T.Giolo [%.1f °C]" <temperature> (gTermoumidostatoLetto, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht12t:number" }
 Number Termoumidostato12U               "U.Giolo [%.1f %%]" <humidity> (gTermoumidostatoLetto, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht12u:number" }
@@ -264,7 +255,6 @@ String Riepilogo12                      "Riepilogo Giolo" (gRiepilogo)
 
 // ============================================================
 // TERMOSTATO 13 - Eleonora
-// NOTA: channel aggiornato da termo_poller07 a termo_poller04
 // ============================================================
 Number:Temperature Termoumidostato13T   "T.Eleonora [%.1f °C]" <temperature> (gTermoumidostatoEleonora, gTemperature, gTempT) ["Measurement","Temperature"] {unit="°C", channel="modbus:data:termo_bridge:termo_poller04:Tht13t:number" }
 Number Termoumidostato13U               "U.Eleonora [%.1f %%]" <humidity> (gTermoumidostatoEleonora, gTemperature) ["Measurement","Humidity"] { channel="modbus:data:termo_bridge:termo_poller04:Tht13u:number" }

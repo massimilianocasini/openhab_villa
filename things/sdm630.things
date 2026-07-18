@@ -1,6 +1,6 @@
-Bridge modbus:serial:sdm630_basis [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1.0", parity="none", dataBits=8, encoding="rtu"]
+Bridge modbus:serial:sdm630_bridge [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1.0", parity="none", dataBits=8, encoding="rtu"]
 {
-    Bridge poller BasisWerte [start=0, length=50, type="input", refresh=5000] {
+    Bridge poller System [start=0, length=50, type="input", refresh=5000] {
         Thing data sdm_L1_volt        [readStart="0", readValueType="float32" ]
         Thing data sdm_L2_volt        [readStart="2", readValueType="float32" ]
         Thing data sdm_L3_volt        [readStart="4", readValueType="float32" ]
@@ -26,10 +26,7 @@ Bridge modbus:serial:sdm630_basis [port="/dev/ttyUSB0", id=1, baud=9600, stopBit
         Thing data sdm_average_line_current [readStart="46", readValueType="float32" ]
         Thing data sdm_average_sum_of_line_current [readStart="48", readValueType="float32" ]            
     }    
-}
 
-Bridge modbus:serial:sdm630_SystemPower [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1.0", parity="none", dataBits=8, encoding="rtu"]
-{
     Bridge poller SystemPower [start=52, length=34, type="input", refresh=5000] {
         Thing data sdm_totalsystemPower       [readStart="52", readValueType="float32" ]
         Thing data sdm_totalsystem_VA   [readStart="56", readValueType="float32" ] 
@@ -46,9 +43,7 @@ Bridge modbus:serial:sdm630_SystemPower [port="/dev/ttyUSB0", id=1, baud=9600, s
       //  Thing data sdm_total_system_power_demand [readStart="84", readValueType="float32" ]
 
     }    
-}
-Bridge modbus:serial:sdm630_3 [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1.0", parity="none", dataBits=8, encoding="rtu"]
-{
+
     Bridge poller sdm_3 [start=234, length=18, type="input", refresh=5000] {
         Thing data sdm_phase1_LN_V_THD [readStart="234", readValueType="float32" ] //EA
         Thing data sdm_phase2_LN_V_THD [readStart="236", readValueType="float32" ]
@@ -59,10 +54,7 @@ Bridge modbus:serial:sdm630_3 [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1
         Thing data sdm_average_V_THD [readStart="248", readValueType="float32" ] //F8
         Thing data sdm_average_I_THD [readStart="250", readValueType="float32" ] //FA
     }
-}
 
-Bridge modbus:serial:sdm630_kWh [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1.0", parity="none", dataBits=8, encoding="rtu"]
-{
     Bridge poller kWh [start=342, length=22, type="input", refresh=5000] {
         Thing data sdm_kwh_Totalkwh       [readStart="342", readValueType="float32" ]      
         Thing data sdm_kwh_Totalkvarh     [readStart="344", readValueType="float32" ]      
@@ -76,9 +68,7 @@ Bridge modbus:serial:sdm630_kWh [port="/dev/ttyUSB0", id=1, baud=9600, stopBits=
         // Thing data sdm_kwh_L2_total_kWh   [readStart="360", readValueType="float32" ]      
         // Thing data sdm_kwh_L3_total_kWh   [readStart="362", readValueType="float32" ]
     }    
-}
-Bridge modbus:serial:sdm630_resettabili [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1.0", parity="none", dataBits=8, encoding="rtu"]
-{
+
     Bridge poller resettable [start=384, length=12, type="input", refresh=5000] {
         Thing data sdm_reset_tot_active_energy       [readStart="384", readValueType="float32" ]      
         Thing data sdm_reset_tot_reactive_energy  [readStart="386", readValueType="float32" ]      
@@ -87,11 +77,8 @@ Bridge modbus:serial:sdm630_resettabili [port="/dev/ttyUSB0", id=1, baud=9600, s
         Thing data sdm_reset_import_reactive_energy  [readStart="392", readValueType="float32" ]
         Thing data sdm_reset_export_reactive_energy  [readStart="394", readValueType="float32" ]      
     }    
-}
-Bridge modbus:serial:sdm630_reset [ port="/dev/ttyUSB0", id=1, baud=9600, dataBits=8, parity="none", stopBits="1.0",  encoding="rtu"]
-{// Poller che include il registro di reset
-    Bridge poller energyReset [ start=61456, length=2, type="holding"] 
-    {
+    // Poller che include il registro di reset
+    Bridge poller energyReset [ start=61456, length=2, type="holding"] {
         // Data Thing con funzione scrittura
         Thing data resetEnergy [ writeStart="61456", writeValueType="int16", writeMultipleEvenWithSingleRegisterOrCoil=true, writeType="holding" ]
     }

@@ -1,6 +1,4 @@
-//Bridge modbus:tcp:termo_bridge [ host="192.168.1.160", port=502, id=1 ] {
-Bridge modbus:tcp:termo_bridge [ host="192.168.188.54", port=5020, id=1 ] {
-    // // read-write for coils. Reading 4 coils, with index 4, and 5.
+Bridge modbus:tcp:termo_bridge [ host="192.168.1.160", port=502, id=1 ] {
     // // These correspond to input register numbers 000005, and 000005
     Bridge poller termo_poller01 [ start=32, length=38, refresh=4000, type="coil" ] {
         // Note the zero based indexing: first coil is index 0.
@@ -15,8 +13,7 @@ Bridge modbus:tcp:termo_bridge [ host="192.168.188.54", port=5020, id=1 ] {
         // Note the zero based indexing: first coil is index 0.
         Thing data AllarmeGen [ readStart="73", readValueType="bit"]        
     }
-//Bridge poller termo_poller03 [ start=79, length=182, refresh=4000, type="coil" ] {
-Bridge poller termo_poller03 [ start=79, length=104, refresh=4000, type="coil" ] {
+    Bridge poller termo_poller03 [ start=79, length=104, refresh=4000, type="coil" ] {
         // Note the zero based indexing: first coil is index 0.
         Thing data TestTht1 [ readStart="79", readValueType="bit"]
         Thing data AllTht1 [ readStart="80", readValueType="bit"]
@@ -109,33 +106,25 @@ Bridge poller termo_poller03 [ start=79, length=104, refresh=4000, type="coil" ]
         Thing data OnTht13 [ readStart="181", readValueType="bit", writeStart="181", writeValueType="bit", writeType="coil"]
         Thing data OffTht13 [ readStart="182", readValueType="bit", writeStart="182", writeValueType="bit", writeType="coil"]                                                       
     }
-
-   // Bridge poller termo_poller04 [ start=16, length=10, refresh=4000, type="holding" ] {
-Bridge poller termo_poller04 [ start=16, length=44, refresh=4000, type="holding" ] {
+    Bridge poller termo_poller04 [ start=16, length=44, refresh=4000, type="holding" ] {
         Thing data Tht1t [ readStart="16", readValueType="int16", readTransform="JS(divide10.js)" ]
         Thing data Tht1u [ readStart="17", readValueType="int16", readTransform="JS(divide10.js)" ]
         Thing data Tht2t [ readStart="20", readValueType="int16", readTransform="JS(divide10.js)"  ]
         Thing data Tht2u [ readStart="21", readValueType="int16", readTransform="JS(divide10.js)"  ]
         Thing data Tht3t [ readStart="24", readValueType="int16", readTransform="JS(divide10.js)"  ]
-        Thing data Tht3u [ readStart="25", readValueType="int16", readTransform="JS(divide10.js)"  ]
-    //}
-    //Bridge poller termo_poller05 [ start=28, length=10, refresh=4000, type="holding" ] {      
+        Thing data Tht3u [ readStart="25", readValueType="int16", readTransform="JS(divide10.js)"  ]    
         Thing data Tht4t [ readStart="28", readValueType="int16", readTransform="JS(divide10.js)"  ]
         Thing data Tht4u [ readStart="29", readValueType="int16", readTransform="JS(divide10.js)"  ]
         Thing data Tht5t [ readStart="32", readValueType="int16", readTransform="JS(divide10.js)" ]
         Thing data Tht5u [ readStart="33", readValueType="int16", readTransform="JS(divide10.js)" ]
         Thing data Tht6t [ readStart="36", readValueType="int16", readTransform="JS(divide10.js)" ]
-        Thing data Tht6u [ readStart="37", readValueType="int16", readTransform="JS(divide10.js)" ]
-   // }
-   // Bridge poller termo_poller06 [ start=40, length=10, refresh=4000, type="holding" ] {      
+        Thing data Tht6u [ readStart="37", readValueType="int16", readTransform="JS(divide10.js)" ]   
         Thing data Tht7t [ readStart="40", readValueType="int16", readTransform="JS(divide10.js)"  ]
         Thing data Tht7u [ readStart="41", readValueType="int16", readTransform="JS(divide10.js)"  ]
         Thing data Tht8t [ readStart="44", readValueType="int16", readTransform="JS(divide10.js)" ]
         Thing data Tht8u [ readStart="45", readValueType="int16", readTransform="JS(divide10.js)" ]
         Thing data Tht9t [ readStart="48", readValueType="int16", readTransform="JS(divide10.js)" ]
-        Thing data Tht9u [ readStart="49", readValueType="int16", readTransform="JS(divide10.js)" ]
-    //}
-    //Bridge poller termo_poller07 [ start=52, length=8, refresh=4000, type="holding" ] {      
+        Thing data Tht9u [ readStart="49", readValueType="int16", readTransform="JS(divide10.js)" ]    
         Thing data Tht10t [ readStart="52", readValueType="int16", readTransform="JS(divide10.js)"  ]
         Thing data Tht10u [ readStart="53", readValueType="int16", readTransform="JS(divide10.js)"  ]
         Thing data Tht11t [ readStart="54", readValueType="int16", readTransform="JS(divide10.js)" ]
@@ -173,9 +162,8 @@ Bridge poller termo_poller04 [ start=16, length=44, refresh=4000, type="holding"
         // Thing data SFascia3 [readStart="5015", readValueType="int16", writeStart="5015", writeValueType="int16", writeType="holding"]
         // Thing data SFascia4 [readStart="5018", readValueType="int16", writeStart="5015", writeValueType="int16", writeType="holding"]
     }
-}
-//Bridge modbus:tcp:pdc_bridge [ host="192.168.1.150", port=502, id=1 ] {
-Bridge modbus:tcp:pdc_bridge [ host="192.168.188.54", port=5021, id=1 ] {
+   }
+Bridge modbus:tcp:pdc_bridge [ host="192.168.1.150", port=502, id=1 ] {
     Bridge poller pdc_poller01 [ start=1, length=6, refresh=4000, type="holding" ] {
         Thing data TAccImp [ readStart="1", readValueType="int16", readTransform="JS(divide10.js)" ]
         Thing data TContrACS [ readStart="2", readValueType="int16", readTransform="JS(divide10.js)" ]
@@ -195,92 +183,5 @@ Bridge modbus:tcp:pdc_bridge [ host="192.168.188.54", port=5021, id=1 ] {
     Bridge poller pdc_poller03 [ start=5003, length=2, refresh=4000, type="holding" ] {
         Thing data StatoPDC [ readStart="5003", readValueType="int16", writeStart="5003", writeValueType="int16", writeType="holding" ]
         Thing data ModoPDC [ readStart="5004", readValueType="int16", writeStart="5004", writeValueType="int16", writeType="holding" ]
-    }
-}
-Bridge modbus:serial:sdm630_bridge [port="/dev/ttyUSB0", id=1, baud=9600, stopBits="1.0", parity="none", dataBits=8, encoding="rtu"]
-{
-    Bridge poller System [start=0, length=50, type="input", refresh=5000] {
-        Thing data sdm_L1_volt        [readStart="0", readValueType="float32" ]
-        Thing data sdm_L2_volt        [readStart="2", readValueType="float32" ]
-        Thing data sdm_L3_volt        [readStart="4", readValueType="float32" ]
-        Thing data sdm_L1_amp         [readStart="6", readValueType="float32" ]
-        Thing data sdm_L2_amp         [readStart="8", readValueType="float32" ]
-        Thing data sdm_L3_amp         [readStart="10", readValueType="float32" ]
-        Thing data sdm_L1_power       [readStart="12", readValueType="float32" ]
-        Thing data sdm_L2_power       [readStart="14", readValueType="float32" ]
-        Thing data sdm_L3_power       [readStart="16", readValueType="float32" ]
-        Thing data sdm_L1_va          [readStart="18", readValueType="float32" ]
-        Thing data sdm_L2_va          [readStart="20", readValueType="float32" ]
-        Thing data sdm_L3_va          [readStart="22", readValueType="float32" ]
-        Thing data sdm_L1_var         [readStart="24", readValueType="float32" ]
-        Thing data sdm_L2_var         [readStart="26", readValueType="float32" ]
-        Thing data sdm_L3_var         [readStart="28", readValueType="float32" ]
-        Thing data sdm_L1_powerfactor [readStart="30", readValueType="float32" ]
-        Thing data sdm_L2_powerfactor [readStart="32", readValueType="float32" ]
-        Thing data sdm_L3_powerfactor [readStart="34", readValueType="float32" ]
-        Thing data sdm_L1_phase_angle [readStart="36", readValueType="float32" ]
-        Thing data sdm_L2_phase_angle [readStart="38", readValueType="float32" ]
-        Thing data sdm_L3_phase_angle [readStart="40", readValueType="float32" ]
-        Thing data sdm_average_line_to_neutral_voltage [readStart="42", readValueType="float32" ]
-        Thing data sdm_average_line_current [readStart="46", readValueType="float32" ]
-        Thing data sdm_average_sum_of_line_current [readStart="48", readValueType="float32" ]            
-    }    
-
-
-    Bridge poller SystemPower [start=52, length=34, type="input", refresh=5000] {
-        Thing data sdm_totalsystemPower       [readStart="52", readValueType="float32" ]
-        Thing data sdm_totalsystem_VA   [readStart="56", readValueType="float32" ] 
-        Thing data sdm_totalsystem_VAr   [readStart="60", readValueType="float32" ] 
-        Thing data sdm_totalsystem_pf    [readStart="62", readValueType="float32" ]
-        Thing data sdm_totalsystem_fa    [readStart="66", readValueType="float32" ]
-        Thing data sdm_frequency_supply  [readStart="70", readValueType="float32" ]
-        Thing data sdm_toatal_import_kWh [readStart="72", readValueType="float32" ]    
-        Thing data sdm_toatal_export_kWh [readStart="74", readValueType="float32" ]
-        Thing data sdm_toatal_import_kvarh [readStart="76", readValueType="float32" ]
-        Thing data sdm_toatal_export_kvarh [readStart="78", readValueType="float32" ]
-        Thing data sdm_toatal_Vah          [readStart="80", readValueType="float32" ]
-        Thing data sdm_Ah                  [readStart="82", readValueType="float32" ]  //52
-      //  Thing data sdm_total_system_power_demand [readStart="84", readValueType="float32" ]
-
-    }    
-
-    Bridge poller sdm_3 [start=234, length=18, type="input", refresh=5000] {
-        Thing data sdm_phase1_LN_V_THD [readStart="234", readValueType="float32" ] //EA
-        Thing data sdm_phase2_LN_V_THD [readStart="236", readValueType="float32" ]
-        Thing data sdm_phase3_LN_V_THD [readStart="238", readValueType="float32" ]
-        Thing data sdm_phase1_LN_I_THD [readStart="240", readValueType="float32" ]
-        Thing data sdm_phase2_LN_I_THD [readStart="242", readValueType="float32" ]
-        Thing data sdm_phase3_LN_I_THD [readStart="244", readValueType="float32" ]
-        Thing data sdm_average_V_THD [readStart="248", readValueType="float32" ] //F8
-        Thing data sdm_average_I_THD [readStart="250", readValueType="float32" ] //FA
-    }
-
-    Bridge poller kWh [start=342, length=22, type="input", refresh=5000] {
-        Thing data sdm_kwh_Totalkwh       [readStart="342", readValueType="float32" ]      
-        Thing data sdm_kwh_Totalkvarh     [readStart="344", readValueType="float32" ]      
-        Thing data sdm_kwh_L1_import_kWh  [readStart="346", readValueType="float32" ]      
-        Thing data sdm_kwh_L2_import_kWh  [readStart="348", readValueType="float32" ]      
-        Thing data sdm_kwh_L3_import_kWh  [readStart="350", readValueType="float32" ]
-        // Thing data sdm_kwh_L1_export_kWh  [readStart="352", readValueType="float32" ]      
-        // Thing data sdm_kwh_L2_export_kWh  [readStart="354", readValueType="float32" ]      
-        // Thing data sdm_kwh_L3_export_kWh  [readStart="356", readValueType="float32" ]
-        // Thing data sdm_kwh_L1_total_kWh   [readStart="358", readValueType="float32" ]      
-        // Thing data sdm_kwh_L2_total_kWh   [readStart="360", readValueType="float32" ]      
-        // Thing data sdm_kwh_L3_total_kWh   [readStart="362", readValueType="float32" ]
-    }    
-
-    Bridge poller resettable [start=384, length=12, type="input", refresh=5000] {
-        Thing data sdm_reset_tot_active_energy       [readStart="384", readValueType="float32" ]      
-        Thing data sdm_reset_tot_reactive_energy  [readStart="386", readValueType="float32" ]      
-        Thing data sdm_reset_import_active_energy  [readStart="388", readValueType="float32" ]      
-        Thing data sdm_reset_export_active_energy  [readStart="390", readValueType="float32" ]      
-        Thing data sdm_reset_import_reactive_energy  [readStart="392", readValueType="float32" ]
-        Thing data sdm_reset_export_reactive_energy  [readStart="394", readValueType="float32" ]      
-    }    
-// Poller che include il registro di reset
-    Bridge poller energyReset [ start=61456, length=2, type="holding", refresh=0] 
-    {
-        // Data Thing con funzione scrittura
-        Thing data resetEnergy [ writeStart="61456", writeValueType="int16", writeMultipleEvenWithSingleRegisterOrCoil=true, writeType="holding" ]
     }
 }
