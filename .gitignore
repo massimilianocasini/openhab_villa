@@ -9,7 +9,7 @@ things/telegram.*
 things/openweathermap.*
 things/solaredge.*
 things/mail.*
-services/influxdb.cfg
+services/influxdb.*
 pushover.*
 telegram.*
 openweathermap.*
