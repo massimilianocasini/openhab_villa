@@ -16,7 +16,8 @@ Strategies
  */ 
 Items
 {
-	gInfluxdb*, gTemperature* : strategy =  everyUpdate, restoreOnStartup
+	gTemperature* : strategy =  everyChange, restoreOnStartup
+	gInfluxdb* : strategy = everyChange, restoreOnStartup
 
 }
 
